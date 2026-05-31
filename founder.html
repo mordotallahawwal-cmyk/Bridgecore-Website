@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet the Founder | Bridgecore Solution</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandDark: '#141517',
+                        brandCream: '#FBFBFA',
+                        brandTeal: '#00A3B1',
+                        brandOrange: '#D95A14',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Corporate UI Typography Grid -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-brandCream text-brandDark antialiased">
+
+    <!-- GLOBAL SITE NAVIGATION HEADER -->
+    <header class="fixed top-4 left-0 right-0 z-50 max-w-5xl mx-auto px-4">
+        <nav class="flex items-center justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-6 py-3 shadow-lg">
+            <a href="index.html" class="text-white font-bold text-lg tracking-tight">Bridgecore<span class="text-brandTeal">.</span></a>
+            <div class="hidden md:flex items-center space-x-1 bg-white/5 backdrop-blur-md border border-white/10 rounded-full p-1">
+                <a href="index.html#impact" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white px-4 py-1.5 rounded-full transition">Impact</a>
+                <a href="services.html" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white px-4 py-1.5 rounded-full transition">Services</a>
+                <a href="process.html" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white px-4 py-1.5 rounded-full transition">Process</a>
+                <a href="#" class="text-xs font-semibold tracking-wider bg-white text-brandDark px-4 py-1.5 rounded-full transition">Founder</a>
+                <a href="index.html#pricing" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white px-4 py-1.5 rounded-full transition">Pricing</a>
+                <a href="#contact" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white px-4 py-1.5 rounded-full transition">Contact</a>
+            </div>
+            <a href="#contact" class="bg-brandOrange hover:bg-brandOrange/90 text-white text-xs font-semibold px-5 py-2.5 rounded-full transition uppercase tracking-wider">Work With Us</a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION (Reconstructed from image_b17e82.png) -->
+    <section class="bg-brandDark text-white pt-36 pb-20 px-4 sm:px-6 lg:px-8 text-center">
+        <div class="max-w-3xl mx-auto space-y-4">
+            <span class="text-brandTeal text-xs font-extrabold tracking-widest uppercase block">The Person Behind Every Resolution</span>
+            <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight">
+                Meet the <span class="text-brandTeal">Founder</span>
+            </h1>
+            <p class="text-gray-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+                Certified. Experienced. Passionate about turning frustrated customers into loyal brand advocates.
+            </p>
+        </div>
+    </section>
+
+    <!-- FOUNDER PROFILE LAYOUT GRID (Reconstructed from image_b17e23.jpg) -->
+    <main class="max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            
+            <!-- LEFT COLUMN: Updated Profile Picture & Certifications Card -->
+            <div class="lg:col-span-5 space-y-8">
+                <!-- Profile Image Display Component (Cleaned of the floating 3+ years badge block) -->
+                <div class="bg-brandDark rounded-3xl overflow-hidden shadow-md relative group border border-gray-800">
+                    <img src="IMG_2901-Edited.jpg.jpg" alt="Aderinola Mardatullah AbdulAwwal" class="w-full h-[520px] object-cover object-center grayscale-[15%] group-hover:grayscale-0 transition duration-500">
+                    <!-- Text Overlay Label inside card -->
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brandDark via-brandDark/80 to-transparent p-8 pt-20">
+                        <h3 class="text-xl font-bold text-white">Aderinola Mardatullah AbdulAwwal</h3>
+                        <p class="text-xs font-medium text-brandTeal mt-1">Founder & Lead CX Consultant, Bridgecore Solution</p>
+                    </div>
+                </div>
+
+                <!-- Certifications Card Block -->
+                <div class="bg-white rounded-3xl border border-gray-200/80 p-8 shadow-sm space-y-6">
+                    <div>
+                        <span class="text-[10px] font-bold tracking-widest text-gray-400 uppercase block">Certifications</span>
+                        <hr class="mt-2 border-gray-100">
+                    </div>
+                    <div class="space-y-5">
+                        <!-- Cert 1 -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-lg bg-brandTeal/10 text-brandTeal flex items-center justify-center shrink-0 mt-0.5">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-brandDark">Customer Experience Certification</h4>
+                                <span class="text-[11px] font-medium text-gray-400">Alison</span>
+                            </div>
+                        </div>
+                        <!-- Cert 2 -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-lg bg-brandTeal/10 text-brandTeal flex items-center justify-center shrink-0 mt-0.5">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-brandDark">CX Management Programme</h4>
+                                <span class="text-[11px] font-medium text-gray-400">Trisyn Academy</span>
+                            </div>
+                        </div>
+                        <!-- Cert 3 -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-lg bg-brandTeal/10 text-brandTeal flex items-center justify-center shrink-0 mt-0.5">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-brandDark">Customer Success Specialist</h4>
+                                <span class="text-[11px] font-medium text-gray-400">VSavvy Academy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: Detailed Professional Bio, Quote Box & Experience Block -->
+            <div class="lg:col-span-7 space-y-10">
+                <div class="space-y-6">
+                    <span class="text-brandTeal text-xs font-extrabold tracking-widest uppercase block">Meet the Founder ———</span>
+                    <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-brandDark">
+                        The Person Behind <br><span class="text-brandTeal">Every Resolution</span>
+                    </h2>
+                    <div class="text-gray-600 text-sm sm:text-base space-y-4 leading-relaxed font-medium">
+                        <p>
+                            Aderinola Mardatullah AbdulAwwal is a certified customer experience professional with extensive hands-on experience turning frustrated customers into loyal brand advocates for Nigerian businesses.
+                        </p>
+                        <p>
+                            Before founding Bridgecore Solution, she sharpened her skills at <strong class="text-brandDark">Blue Connect Technology</strong>, a growing Nigerian fintech company, where she managed complex complaint pipelines, reduced resolution times, and directly contributed to improved customer retention metrics.
+                        </p>
+                        <p>
+                            Today, she brings that same rigour to Bridgecore — offering Nigerian businesses a professional, outsourced complaint management service that treats every customer interaction as a revenue opportunity.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Quote Block -->
+                <div class="bg-white rounded-3xl border border-gray-200/80 p-8 shadow-sm relative overflow-hidden">
+                    <div class="absolute right-6 top-6 text-gray-100 shrink-0">
+                        <svg class="w-16 h-16 transform translate-x-4 -translate-y-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.85h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9 Bethlehem-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.85h4v10h-10z"/></svg>
+                    </div>
+                    <blockquote class="relative z-10 text-base sm:text-lg font-bold text-brandDark italic leading-relaxed">
+                        "Every unresolved complaint is a customer walking out the door. I built Bridgecore to make sure that door stays closed."
+                    </blockquote>
+                    <div class="mt-4 flex items-center gap-2">
+                        <span class="w-5 h-[2px] bg-brandTeal"></span>
+                        <span class="text-xs font-bold text-brandTeal">Aderinola AbdulAwwal, Founder</span>
+                    </div>
+                </div>
+
+                <!-- Experience Block -->
+                <div class="space-y-6">
+                    <div>
+                        <span class="text-[10px] font-bold tracking-widest text-gray-400 uppercase block">Professional Experience</span>
+                        <hr class="mt-2 border-gray-100">
+                    </div>
+                    <div class="space-y-4">
+                        <!-- Role 1 -->
+                        <div class="bg-white rounded-2xl border border-gray-200/80 p-6 shadow-sm flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                            <div class="flex items-start gap-4">
+                                <span class="w-2.5 h-2.5 rounded-full bg-brandTeal shrink-0 mt-1.5"></span>
+                                <div class="space-y-1">
+                                    <h4 class="text-sm font-extrabold text-brandDark">Customer Experience Specialist</h4>
+                                    <span class="text-xs font-bold text-brandTeal block">Blue Connect Technology</span>
+                                    <span class="inline-block text-[10px] bg-gray-100 font-semibold px-2 py-0.5 rounded text-gray-500">Fintech - Growing Stage</span>
+                                    <p class="text-xs text-gray-500 leading-relaxed pt-2">
+                                        Managed end-to-end customer complaint resolution for a fast-growing Nigerian fintech company, reducing churn and improving NPS scores significantly.
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="text-[10px] font-extrabold bg-gray-100 border border-gray-200 rounded-full px-3 py-1 text-gray-500 uppercase self-start whitespace-nowrap tracking-wider">2+ Years</span>
+                        </div>
+
+                        <!-- Role 2 -->
+                        <div class="bg-white rounded-2xl border border-gray-200/80 p-6 shadow-sm flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                            <div class="flex items-start gap-4">
+                                <span class="w-2.5 h-2.5 rounded-full bg-brandOrange shrink-0 mt-1.5"></span>
+                                <div class="space-y-1">
+                                    <h4 class="text-sm font-extrabold text-brandDark">Founder & Lead CX Consultant</h4>
+                                    <span class="text-xs font-bold text-brandOrange block">Bridgecore Solution</span>
+                                    <span class="inline-block text-[10px] bg-gray-100 font-semibold px-2 py-0.5 rounded text-gray-500">Complaint Management - B2B</span>
+                                    <p class="text-xs text-gray-500 leading-relaxed pt-2">
+                                        Built and runs Nigeria's specialist outsourced complaint management service, serving businesses across fintech, e-commerce, and retail.
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="text-[10px] font-extrabold bg-gray-100 border border-gray-200 rounded-full px-3 py-1 text-gray-500 uppercase self-start whitespace-nowrap tracking-wider">Present</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Call-to-Actions inside Right Grid Section -->
+                <div class="flex flex-wrap items-center gap-4 pt-4">
+                    <a href="#contact" class="inline-flex items-center gap-2 bg-brandTeal hover:bg-brandTeal/90 text-white font-bold text-xs px-6 py-4 rounded-xl transition shadow-md tracking-wider uppercase">
+                        Work With Aderinola ➔
+                    </a>
+                    <a href="mailto:bridgecoreng@outlook.com" class="inline-flex items-center bg-white border border-brandDark text-brandDark font-bold text-xs px-6 py-4 rounded-xl hover:bg-gray-50 transition tracking-wider uppercase">
+                        Send a Direct Message
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- LET'S TALK CONTAINER / INTERACTIVE FORM SECTION (Reconstructed from image_b17d87.png) -->
+    <section id="contact" class="bg-brandDark text-white py-24 px-4 sm:px-6 lg:px-8 border-t border-white/5 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left Info block -->
+            <div class="lg:col-span-5 space-y-6">
+                <span class="text-brandTeal text-xs font-extrabold tracking-widest uppercase block">Let's Talk</span>
+                <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-none">
+                    Ready to Stop <br>Losing Customers to <br><span class="text-brandTeal">Poor Complaint Handling?</span>
+                </h2>
+                <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                    Tell us about your business and we'll show you exactly how Bridgecore can help you retain more customers and recover lost operational energy.
+                </p>
+            </div>
+
+            <!-- Right Form Component Block -->
+            <div class="lg:col-span-7 bg-white text-brandDark rounded-3xl p-8 sm:p-10 shadow-xl border border-gray-100">
+                <div class="mb-6">
+                    <h3 class="text-xl font-extrabold">Start a Conversation</h3>
+                    <p class="text-xs text-gray-400 mt-1">Fill in your details and we'll get back to you within 24 hours.</p>
+                </div>
+
+                <form class="space-y-4" action="#" method="POST">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Full Name -->
+                        <div class="space-y-1.5">
+                            <label class="text-[10px] font-extrabold tracking-wider uppercase text-gray-500 block">Full Name <span class="text-brandOrange">*</span></label>
+                            <input type="text" required placeholder="Chukwuemeka Okonkwo" class="w-full text-xs font-semibold bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 focus:outline-none focus:border-brandTeal text-brandDark placeholder-gray-300">
+                        </div>
+                        <!-- Company Name -->
+                        <div class="space-y-1.5">
+                            <label class="text-[10px] font-extrabold tracking-wider uppercase text-gray-500 block">Company Name <span class="text-brandOrange">*</span></label>
+                            <input type="text" required placeholder="Zeal Fintech Ltd." class="w-full text-xs font-semibold bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 focus:outline-none focus:border-brandTeal text-brandDark placeholder-gray-300">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Email -->
+                        <div class="space-y-1.5">
+                            <label class="text-[10px] font-extrabold tracking-wider uppercase text-gray-500 block">Email Address <span class="text-brandOrange">*</span></label>
+                            <input type="email" required placeholder="ceo@zealfintech.ng" class="w-full text-xs font-semibold bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 focus:outline-none focus:border-brandTeal text-brandDark placeholder-gray-300">
+                        </div>
+                        <!-- Whatsapp / Phone -->
+                        <div class="space-y-1.5">
+                            <label class="text-[10px] font-extrabold tracking-wider uppercase text-gray-500 block">Whatsapp / Phone</label>
+                            <input type="tel" placeholder="+234 801 234 5678" class="w-full text-xs font-semibold bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 focus:outline-none focus:border-brandTeal text-brandDark placeholder-gray-300">
+                        </div>
+                    </div>
+
+                    <!-- Industry Select -->
+                    <div class="space-y-1.5">
+                        <label class="text-[10px] font-extrabold tracking-wider uppercase text-gray-500 block">Industry</label>
+                        <div class="relative">
+                            <select class="w-full text-xs font-semibold bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 focus:outline-none focus:border-brandTeal text-brandDark appearance-none cursor-pointer">
+                                <option value="" disabled selected>Select your industry</option>
+                                <option value="fintech">Fintech & Financial Services</option>
+                                <option value="ecommerce">E-commerce & Retail</option>
+                                <option value="logistics">Logistics & Supply Chain</option>
+                                <option value="other">Other Business Services</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-gray-400">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Message text -->
+                    <div class="space-y-1.5">
+                        <label class="text-[10px] font-extrabold tracking-wider uppercase text-gray-500 block">How can we help you? <span class="text-brandOrange">*</span></label>
+                        <textarea required rows="3" placeholder="Tell us about your current customer support challenges..." class="w-full text-xs font-semibold bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 focus:outline-none focus:border-brandTeal text-brandDark placeholder-gray-300 resize-none"></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full bg-brandDark hover:bg-brandDark/90 text-white font-bold text-xs py-4 rounded-xl transition tracking-wider uppercase shadow-md mt-2">
+                        Submit Inquiry ➔
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER COMPONENT -->
+    <footer class="bg-brandCream pt-16 pb-12 px-4 sm:px-6 lg:px-8 border-t border-gray-200/60">
+        <div class="max-w-7xl mx-auto space-y-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-lg bg-brandDark flex items-center justify-center text-white font-black text-sm">B</div>
+                    <span class="text-brandDark font-bold text-base tracking-tight">Bridgecore<span class="text-brandTeal">.</span></span>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-semibold text-gray-500">
+                    <a href="index.html#impact" class="hover:text-brandDark transition">Impact</a>
+                    <a href="services.html" class="hover:text-brandDark transition">Services</a>
+                    <a href="process.html" class="hover:text-brandDark transition">Process</a>
+                    <a href="#" class="text-brandDark transition">Founder</a>
+                    <a href="index.html#pricing" class="hover:text-brandDark transition">Pricing</a>
+                    <a href="#contact" class="hover:text-brandDark transition">Contact</a>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <a href="https://wa.me/2349019214642" target="_blank" class="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:text-brandDark transition">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.503-5.713-1.458L0 24zm6.59-4.846c1.6.95 3.16 1.449 4.815 1.451 5.432.002 9.851-4.415 9.854-9.851.002-2.634-1.02-5.111-2.879-6.973-1.859-1.862-4.339-2.885-6.975-2.887-5.436 0-9.854 4.417-9.857 9.853-.001 1.741.469 3.441 1.361 4.938l-.4 1.46 1.493-.392z"/></svg>
+                    </a>
+                    <a href="mailto:bridgecoreng@outlook.com" class="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:text-brandDark transition">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-medium text-gray-400">
+                <span>© 2026 Bridgecore Solution. CAC Registered. All rights reserved.</span>
+                <div class="space-x-4">
+                    <a href="#" class="hover:text-brandDark transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-brandDark transition">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
