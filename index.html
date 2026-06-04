@@ -4,20 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bridgecore - Customer Experience & Complaint Management</title>
+    
+    <!-- Tailwind Script -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Favicon link (Moved into the main head) -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
+
 <body class="bg-gray-900 text-white">
 
-    <!-- NAVIGATION -->
-    <nav class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
-        <div class="text-xl font-bold">Bridgecore</div>
-        <div class="hidden md:flex space-x-8 text-xs font-semibold text-gray-300">
+    <!-- NAVIGATION WITH ADDED BOTTOM MARGIN -->
+    <nav class="w-full max-w-7xl mx-auto px-6 py-6 mb-16 flex items-center justify-between">
+        <!-- Logo -->
+        <div class="text-xl font-bold text-white">Bridgecore</div>
+
+        <!-- Links -->
+        <div class="flex items-center space-x-8 text-xs font-semibold text-gray-300">
             <a href="index.html" class="hover:text-white">Home</a>
             <a href="services.html" class="hover:text-white">Services</a>
             <a href="pricing.html" class="hover:text-white">Pricing</a>
             <a href="#contact" class="hover:text-white">Contact</a>
         </div>
     </nav>
+
+</body>
+</html>
+
+<!-- HERO SECTION (Ensure there is no extra padding fighting the margin above) -->
+<section class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
+    <!-- Your existing hero content here -->
+</section>
 
     <!-- HERO SECTION -->
     <section class="max-w-7xl mx-auto px-6 pt-12 md:pt-20 grid lg:grid-cols-12 gap-12 items-center">
