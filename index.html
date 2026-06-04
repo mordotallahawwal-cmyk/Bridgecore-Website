@@ -1,58 +1,37 @@
-<!-- REVISED HERO SECTION -->
-<section class="relative min-h-[80vh] w-full bg-gray-900 flex flex-col items-center">
+<!-- SINGLE CLEAN HEADER -->
+<header class="w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+    <div class="text-xl font-bold text-white">Bridgecore</div>
+    <nav class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="text-xs font-semibold text-gray-300 hover:text-white">Home</a>
+        <a href="services.html" class="text-xs font-semibold text-gray-300 hover:text-white">Services</a>
+        <a href="pricing.html" class="text-xs font-semibold text-gray-300 hover:text-white">Pricing</a>
+        <a href="#contact" class="text-xs font-semibold text-gray-300 hover:text-white">Contact</a>
+    </nav>
+</header>
+
+<!-- SINGLE CLEAN HERO -->
+<section class="relative w-full max-w-7xl mx-auto px-6 pt-12 md:pt-20 grid lg:grid-cols-12 gap-12 items-center">
+    <!-- Left: Content -->
+    <div class="lg:col-span-8 flex flex-col items-start space-y-6">
+        <div class="inline-flex items-center space-x-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-[10px] font-bold text-gray-300 uppercase">
+            <span>CAC Registered - Est. August 2025</span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-extrabold text-white leading-tight">
+            We Don't Just Respond, <span class="text-[#00B2D6]">We Resolve.</span>
+        </h1>
+        <p class="text-gray-300 text-base max-w-xl">
+            Bridgecore Solution helps businesses retain more customers, resolve complaints faster, and increase revenue — managed professionally on your behalf.
+        </p>
+    </div>
     
-    <!-- Cleaned Navigation -->
-    <header class="w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between z-50">
-        <div class="flex items-center space-x-2">
-            <span class="text-xl font-bold tracking-tight text-white">Bridgecore</span>
-        </div>
-
-        <nav class="hidden md:flex items-center space-x-8">
-            <a href="index.html" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white transition">Home</a>
-            <a href="services.html" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white transition">Services</a>
-            <a href="pricing.html" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white transition">Pricing</a>
-            <a href="#contact" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white transition">Contact</a>
-        </nav>
-    </header>
-
-    <!-- Main Content Area -->
-    <div class="flex-grow w-full max-w-7xl mx-auto px-6 pt-12 md:pt-20 grid lg:grid-cols-12 gap-12 items-center">
-        
-        <!-- Left: Text -->
-        <div class="lg:col-span-8 flex flex-col items-start space-y-6">
-            <div class="inline-flex items-center space-x-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-[10px] font-bold tracking-widest text-gray-300 uppercase">
-                <span class="w-2 h-2 rounded-full bg-[#00B2D6]"></span>
-                <span>CAC Registered - Est. August 2025</span>
-            </div>
-
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-white">
-                We Don't Just <br class="hidden sm:block">
-                Respond, <span class="text-[#00B2D6]">We Resolve.</span>
-            </h1>
-
-            <p class="text-gray-300 text-sm sm:text-base leading-relaxed font-light max-w-xl">
-                Bridgecore Solution helps businesses retain more customers, resolve complaints faster, and increase revenue — managed professionally on your behalf.
-            </p>
-        </div>
-
-        <!-- Right: Floating Info Card -->
-        <div class="lg:col-span-4 flex justify-center lg:justify-end w-full">
-            <div class="bg-white text-gray-900 rounded-2xl p-6 shadow-2xl max-w-sm w-full border border-gray-100">
-                <div class="flex items-start space-x-3 mb-6">
-                    <div class="bg-[#00B2D6]/10 p-2 rounded-xl text-[#00B2D6]">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                    </div>
-                    <div>
-                        <h4 class="text-xs font-bold text-gray-900 tracking-tight">Trusted by Businesses</h4>
-                        <p class="text-[11px] text-gray-500 mt-0.5">Across fintech, retail & e-commerce</p>
-                    </div>
-                </div>
-                <hr class="border-gray-100 my-4">
-                <div class="grid grid-cols-3 gap-2 text-center">
-                    <div><span class="block text-sm font-extrabold text-[#00B2D6]">CX</span><span class="text-[10px] text-gray-400 uppercase">Certified</span></div>
-                    <div><span class="block text-sm font-extrabold text-[#F25C22]">3yrs</span><span class="text-[10px] text-gray-400 uppercase">Exp.</span></div>
-                    <div><span class="block text-sm font-extrabold text-emerald-600">1k+</span><span class="text-[10px] text-gray-400 uppercase">Resolved</span></div>
-                </div>
+    <!-- Right: Stats Card -->
+    <div class="lg:col-span-4 flex justify-end">
+        <div class="bg-white text-gray-900 rounded-2xl p-6 shadow-2xl max-w-sm w-full">
+            <h4 class="text-xs font-bold mb-4">Trusted by Growing Businesses</h4>
+            <div class="grid grid-cols-3 gap-2 text-center border-t pt-4">
+                <div><span class="block text-sm font-extrabold text-[#00B2D6]">CX</span><span class="text-[10px] text-gray-400">Certified</span></div>
+                <div><span class="block text-sm font-extrabold text-[#F25C22]">3yrs</span><span class="text-[10px] text-gray-400">Exp.</span></div>
+                <div><span class="block text-sm font-extrabold text-emerald-600">1k+</span><span class="text-[10px] text-gray-400">Resolved</span></div>
             </div>
         </div>
     </div>
