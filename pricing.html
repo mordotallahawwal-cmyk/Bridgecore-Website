@@ -3,27 +3,201 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BridgeCore Solution — Pricing Framework</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+  <title>Pricing Framework — BridgeCore Solution</title>
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <meta name="theme-color" content="#ffffff">
 
-    /* --- Global Reset & Brand Tokens --- */
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap">
+
+  <style>
+    /* --- Global Reset & Core Styling --- */
     * { 
       box-sizing: border-box; 
       margin: 0; 
       padding: 0; 
     }
 
-    body {
+    html, body {
       background: #ffffff;
       color: #111111;
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* --- Pricing Grid Section --- */
+    /* --- Clean Fixed Global Navigation Bar --- */
+    .bcore-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Clash Display', sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      color: #111111;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-logo span {
+      color: #00bdf2;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-item a {
+      font-size: 14px;
+      font-weight: 500;
+      color: #555555;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-item a:hover, .nav-item.active a {
+      color: #111111;
+    }
+
+    .nav-cta-btn {
+      font-family: 'Clash Display', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: #ffffff;
+      background: #0d0d0d;
+      padding: 0.65rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background 0.2s ease;
+    }
+
+    .nav-cta-btn:hover {
+      background: #00bdf2;
+      color: #000000;
+    }
+
+    /* --- Hamburger Button Interface --- */
+    .hamburger-trigger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 24px;
+      height: 18px;
+      position: relative;
+      z-index: 1010;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hamburger-line {
+      width: 100%;
+      height: 2px;
+      background-color: #111111;
+      border-radius: 2px;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    }
+
+    /* Hamburger Animation Conversions */
+    .hamburger-trigger.is-active .line-top {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger-trigger.is-active .line-mid {
+      opacity: 0;
+    }
+
+    .hamburger-trigger.is-active .line-bot {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* --- Mobile Dropdown Menu Canvas --- */
+    .mobile-nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: #ffffff;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .mobile-nav-overlay.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-links-wrapper {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .mobile-nav-item a {
+      font-family: 'Clash Display', sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: #111111;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .mobile-cta-btn {
+      font-family: 'Clash Display', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #ffffff;
+      background: #0d0d0d;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    /* --- Asymmetric Grid Framework Layout --- */
     .bcore-pricing-section {
-      padding: 6rem 2rem;
+      padding: 10rem 2rem 6rem 2rem; /* Offsets fixed tracking navbar header */
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -35,14 +209,12 @@
       align-items: stretch;
     }
 
-    /* --- Shared Card Styles --- */
     .bcore-card {
       border-radius: 28px;
       padding: 2.5rem;
       display: flex;
       flex-direction: column;
       position: relative;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .bcore-card h3 {
@@ -60,7 +232,7 @@
       font-weight: 400;
     }
 
-    /* --- CARD 1: Tall Dark Card (Left Column) --- */
+    /* Card Variant 1: Left Dark Architectural Block */
     .card-dark {
       background: #0d0d0d;
       color: #ffffff;
@@ -141,7 +313,7 @@
       margin-top: auto;
     }
 
-    /* --- CARDS 2 & 3: Stacked White Cards (Middle Column) --- */
+    /* Center Stack Component Rules */
     .bcore-middle-stack {
       grid-column: 2;
       display: flex;
@@ -153,7 +325,6 @@
       background: #ffffff;
       color: #111111;
       border: 1px solid #f0f0f0;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.01);
     }
 
     .card-white p {
@@ -208,7 +379,7 @@
       text-transform: uppercase;
     }
 
-    /* --- CARD 4: Solid Cyan Card (Right Column) --- */
+    /* Card Variant 3: Solid Cyan Architectural Block */
     .card-cyan {
       background: #00bdf2;
       color: #000000;
@@ -218,13 +389,12 @@
       min-height: 560px;
     }
 
-    .card-cyan h3 {
+    .card-cyan h3, .card-cyan p {
       color: #000000;
     }
 
     .card-cyan p {
       color: rgba(0, 0, 0, 0.75);
-      font-weight: 400;
     }
 
     .top-badge-white {
@@ -235,7 +405,6 @@
       background: rgba(255, 255, 255, 0.25);
       padding: 4px 10px;
       border-radius: 4px;
-      color: #000000;
     }
 
     .price-large-dark {
@@ -260,13 +429,12 @@
       margin-top: auto;
     }
 
-    /* --- Brand Footer Section --- */
+    /* --- Premium Integrated Brand Footer --- */
     .bcore-footer {
       background: #0a0a0a;
       color: #ffffff;
-      padding: 5rem 2rem 2rem 2rem;
+      padding: 6rem 2rem 2.5rem 2rem;
       width: 100%;
-      position: relative;
     }
 
     .footer-content {
@@ -359,7 +527,7 @@
       letter-spacing: 0.02em;
     }
 
-    /* --- Responsive Breakpoints --- */
+    /* --- Media Queries Breakpoint Adaptation Matrix --- */
     @media (max-width: 1024px) {
       .bcore-grid-wrapper {
         grid-template-columns: 1fr 1fr;
@@ -372,15 +540,23 @@
         grid-column: 2;
       }
       .card-cyan {
-        grid-column: 1 / -0.5px;
+        grid-column: 1 / -1;
         grid-row: span 1;
-        min-height: 400px;
+        min-height: 420px;
       }
     }
 
     @media (max-width: 768px) {
+      .nav-links, .nav-cta-wrapper {
+        display: none;
+      }
+      
+      .hamburger-trigger {
+        display: flex;
+      }
+
       .bcore-pricing-section {
-        padding: 4rem 1.5rem;
+        padding: 8rem 1.5rem 4rem 1.5rem;
       }
       .bcore-grid-wrapper {
         grid-template-columns: 1fr;
@@ -388,6 +564,7 @@
       .card-dark, .bcore-middle-stack, .card-cyan {
         grid-column: 1;
       }
+      
       .footer-bottom-bar {
         flex-direction: column;
         gap: 1.5rem;
@@ -397,7 +574,38 @@
 </head>
 <body>
 
-  <section class="bcore-pricing-section">
+  <nav class="bcore-navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">BridgeCore<span>.</span></a>
+      
+      <ul class="nav-links">
+        <li class="nav-item"><a href="/">Home</a></li>
+        <li class="nav-item"><a href="/services.html">Services</a></li>
+        <li class="nav-item active"><a href="/pricing.html">Pricing</a></li>
+      </ul>
+
+      <div class="nav-cta-wrapper">
+        <a href="#talk" class="nav-cta-btn">Get Started</a>
+      </div>
+
+      <button class="hamburger-trigger" id="mobile-menu-trigger" aria-label="Toggle navigation overlay menu">
+        <span class="hamburger-line line-top"></span>
+        <span class="hamburger-line line-mid"></span>
+        <span class="hamburger-line line-bot"></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-nav-overlay" id="mobile-navigation-canvas">
+    <ul class="mobile-links-wrapper">
+      <li class="mobile-nav-item"><a href="/">Home</a></li>
+      <li class="mobile-nav-item"><a href="/services.html">Services</a></li>
+      <li class="mobile-nav-item"><a href="/pricing.html" style="color: #00bdf2;">Pricing</a></li>
+    </ul>
+    <a href="#talk" class="mobile-cta-btn" id="mobile-cta-trigger">Get Started</a>
+  </div>
+
+  <main class="bcore-pricing-section">
     <div class="bcore-grid-wrapper">
       
       <div class="bcore-card card-dark">
@@ -438,7 +646,7 @@
         <div class="bcore-card card-white">
           <div class="card-meta-inline">
             <div class="icon-bubble-light">
-              <span style="font-size: 20px;">📈</span>
+              <span style="font-size: 20px;">%</span>
             </div>
           </div>
           <h3>The BridgeCore Standard</h3>
@@ -470,7 +678,7 @@
       </div>
 
     </div>
-  </section>
+  </main>
 
   <footer class="bcore-footer" id="talk">
     <div class="footer-content">
@@ -490,6 +698,28 @@
 
     </div>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuTrigger = document.getElementById('mobile-menu-trigger');
+      const navCanvas = document.getElementById('mobile-navigation-canvas');
+      const mobileCta = document.getElementById('mobile-cta-trigger');
+      const overlayLinks = document.querySelectorAll('.mobile-nav-item a');
+
+      function toggleMobileNavigation() {
+        menuTrigger.classList.toggle('is-active');
+        navCanvas.classList.toggle('is-open');
+        document.body.style.overflow = navCanvas.classList.contains('is-open') ? 'hidden' : '';
+      }
+
+      menuTrigger.addEventListener('click', toggleMobileNavigation);
+      mobileCta.addEventListener('click', toggleMobileNavigation);
+      
+      overlayLinks.forEach(link => {
+        link.addEventListener('click', toggleMobileNavigation);
+      });
+    });
+  </script>
 
 </body>
 </html>
