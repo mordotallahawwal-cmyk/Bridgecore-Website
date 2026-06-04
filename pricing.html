@@ -8,12 +8,12 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#000000">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap">
 
   <style>
-    /* --- Global Reset & Core Styling --- */
+    /* --- Core Engine & Layout Tokens --- */
     * { 
       box-sizing: border-box; 
       margin: 0; 
@@ -21,33 +21,31 @@
     }
 
     html, body {
-      background: #ffffff;
-      color: #111111;
+      background: #000000;
+      color: #ffffff;
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
       scroll-behavior: smooth;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* --- Clean Fixed Global Navigation Bar --- */
-    .bcore-navbar {
+    /* --- Retained: Original Dark Premium Navbar Style --- */
+    .brand-navbar {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 80px;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+      height: 90px;
+      background: #000000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       z-index: 1000;
       display: flex;
       align-items: center;
     }
 
-    .nav-container {
+    .nav-inner-container {
       width: 100%;
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
       padding: 0 2rem;
       display: flex;
@@ -55,668 +53,910 @@
       align-items: center;
     }
 
-    .nav-logo {
-      font-family: 'Clash Display', sans-serif;
-      font-weight: 600;
-      font-size: 22px;
-      color: #111111;
-      text-decoration: none;
-      letter-spacing: -0.01em;
-    }
-
-    .nav-logo span {
-      color: #00bdf2;
-    }
-
-    .nav-links {
+    .brand-logo-wrapper {
       display: flex;
       align-items: center;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
-    .nav-item a {
-      font-size: 14px;
-      font-weight: 500;
-      color: #555555;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .nav-item a:hover, .nav-item.active a {
-      color: #111111;
-    }
-
-    .nav-cta-btn {
+      gap: 8px;
       font-family: 'Clash Display', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .brand-logo-square {
+      width: 12px;
+      height: 12px;
+      background: #00bdf2;
+      border-radius: 2px;
+    }
+
+    /* Original Center Pill Menu Container */
+    .center-pill-menu {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 6px 12px;
+      border-radius: 100px;
+      list-style: none;
+      gap: 0.5rem;
+    }
+
+    .pill-nav-item a {
       font-size: 13px;
       font-weight: 500;
-      letter-spacing: 0.04em;
+      color: #aaaaaa;
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: all 0.2s ease;
+    }
+
+    .pill-nav-item a:hover, .pill-nav-item.active a {
       color: #ffffff;
-      background: #0d0d0d;
-      padding: 0.65rem 1.5rem;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Original High Contrast Orange Action CTA */
+    .orange-cta-btn {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #ffffff;
+      background: #ff5421;
+      padding: 0.85rem 1.8rem;
       border-radius: 50px;
       text-decoration: none;
       text-transform: uppercase;
-      transition: background 0.2s ease;
+      transition: opacity 0.2s ease;
     }
 
-    .nav-cta-btn:hover {
-      background: #00bdf2;
-      color: #000000;
+    .orange-cta-btn:hover {
+      opacity: 0.9;
     }
 
-    /* --- Hamburger Button Interface --- */
-    .hamburger-trigger {
+    /* --- Added: Responsive Hamburger Icon System --- */
+    .mobile-hamburger-trigger {
       display: none;
       background: none;
       border: none;
       cursor: pointer;
       width: 24px;
-      height: 18px;
+      height: 16px;
       position: relative;
       z-index: 1010;
       flex-direction: column;
       justify-content: space-between;
     }
 
-    .hamburger-line {
+    .hamburger-wire {
       width: 100%;
       height: 2px;
-      background-color: #111111;
+      background-color: #ffffff;
       border-radius: 2px;
       transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
     }
 
-    /* Hamburger Animation Conversions */
-    .hamburger-trigger.is-active .line-top {
-      transform: translateY(8px) rotate(45deg);
+    .mobile-hamburger-trigger.is-active .wire-top {
+      transform: translateY(7px) rotate(45deg);
     }
 
-    .hamburger-trigger.is-active .line-mid {
+    .mobile-hamburger-trigger.is-active .wire-mid {
       opacity: 0;
     }
 
-    .hamburger-trigger.is-active .line-bot {
-      transform: translateY(-8px) rotate(-45deg);
+    .mobile-hamburger-trigger.is-active .wire-bot {
+      transform: translateY(-7px) rotate(-45deg);
     }
 
-    /* --- Mobile Dropdown Menu Canvas --- */
-    .mobile-nav-overlay {
+    /* Mobile Menu Drawer Canvas Overlay */
+    .mobile-navigation-drawer {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100vh;
-      background: #ffffff;
+      background: #000000;
       z-index: 999;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 2rem;
+      padding: 3rem;
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.3s ease, visibility 0.3s ease;
     }
 
-    .mobile-nav-overlay.is-open {
+    .mobile-navigation-drawer.is-open {
       opacity: 1;
       visibility: visible;
     }
 
-    .mobile-links-wrapper {
+    .mobile-links-stack {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 1.75rem;
       margin-bottom: 3rem;
     }
 
-    .mobile-nav-item a {
+    .mobile-stack-item a {
       font-family: 'Clash Display', sans-serif;
-      font-size: 32px;
+      font-size: 36px;
       font-weight: 600;
-      color: #111111;
-      text-decoration: none;
-      letter-spacing: -0.01em;
-    }
-
-    .mobile-cta-btn {
-      font-family: 'Clash Display', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
       color: #ffffff;
-      background: #0d0d0d;
-      padding: 1rem 2rem;
-      border-radius: 50px;
       text-decoration: none;
-      text-align: center;
     }
 
-    /* --- Asymmetric Grid Framework Layout --- */
-    .bcore-pricing-section {
-      padding: 10rem 2rem 6rem 2rem; /* Offsets fixed tracking navbar header */
-      max-width: 1200px;
+    /* --- New Asymmetric Dynamic Pricing Layout Body --- */
+    .pricing-canvas-wrapper {
+      padding: 10rem 2rem 6rem 2rem;
+      max-width: 1240px;
       margin: 0 auto;
     }
 
-    .bcore-grid-wrapper {
+    .pricing-intro-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .pricing-intro-header span {
+      font-family: 'Clash Display', sans-serif;
+      color: #00bdf2;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 600;
+    }
+
+    .pricing-intro-header h1 {
+      font-family: 'Clash Display', sans-serif;
+      font-size: clamp(36px, 5vw, 54px);
+      font-weight: 600;
+      margin-top: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .asymmetric-pricing-grid {
       display: grid;
-      grid-template-columns: 1.14fr 1.2fr 1.14fr;
+      grid-template-columns: 1.15fr 1.2fr 1.15fr;
       gap: 2rem;
       align-items: stretch;
     }
 
-    .bcore-card {
-      border-radius: 28px;
+    .pricing-architecture-card {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
       padding: 2.5rem;
       display: flex;
       flex-direction: column;
       position: relative;
     }
 
-    .bcore-card h3 {
+    .pricing-architecture-card h3 {
       font-family: 'Clash Display', sans-serif;
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 600;
-      line-height: 1.2;
       margin-bottom: 1rem;
-      letter-spacing: -0.01em;
     }
 
-    .bcore-card p {
-      font-size: 14.5px;
-      line-height: 1.65;
-      font-weight: 400;
+    .pricing-architecture-card p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #aaaaaa;
     }
 
-    /* Card Variant 1: Left Dark Architectural Block */
-    .card-dark {
+    /* Card Variant 1: Left Heavy Dark Foundation Element */
+    .card-foundation-dark {
       background: #0d0d0d;
-      color: #ffffff;
       grid-column: 1;
       grid-row: span 2;
       justify-content: space-between;
-      min-height: 560px;
+      min-height: 540px;
     }
 
-    .card-dark p {
-      color: #aaaaaa;
-      font-weight: 300;
-      margin-bottom: 2rem;
-    }
-
-    .icon-bubble {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+    .foundation-icon-box {
+      width: 40px;
+      height: 40px;
+      background: rgba(0, 189, 242, 0.1);
+      border: 1px solid rgba(0, 189, 242, 0.2);
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
-    .icon-bubble svg {
-      width: 20px;
-      height: 20px;
+    .foundation-icon-box svg {
+      width: 18px;
+      height: 18px;
       fill: #00bdf2;
     }
 
-    .price-large {
-      font-family: 'Clash Display', sans-serif;
-      font-size: 36px;
-      font-weight: 700;
-      color: #ffffff;
-      margin-top: auto;
-      margin-bottom: 2rem;
-    }
-
-    .price-subtext {
-      font-size: 12px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      color: #555555;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-    }
-
-    .feature-list {
+    .foundation-check-list {
       list-style: none;
-      margin-bottom: 3rem;
+      margin: 2.5rem 0;
     }
 
-    .feature-item {
+    .foundation-check-item {
       font-size: 13.5px;
       color: #cccccc;
-      font-weight: 300;
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.8rem;
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 10px;
     }
 
-    .feature-item::before {
+    .foundation-check-item::before {
       content: '✓';
       color: #00bdf2;
       font-weight: 700;
     }
 
-    .card-bottom-label {
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
+    .foundation-price-metric {
+      font-family: 'Clash Display', sans-serif;
+      font-size: 36px;
       font-weight: 700;
-      color: #00bdf2;
-      margin-top: auto;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
     }
 
-    /* Center Stack Component Rules */
-    .bcore-middle-stack {
+    .foundation-price-metric span {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11px;
+      color: #666666;
+      letter-spacing: 0.05em;
+    }
+
+    .foundation-bottom-tag {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #00bdf2;
+      font-weight: 700;
+    }
+
+    /* Middle Layout Column Stack Elements */
+    .center-structural-stack {
       grid-column: 2;
       display: flex;
       flex-direction: column;
       gap: 2rem;
     }
 
-    .card-white {
+    .card-modular-white {
       background: #ffffff;
-      color: #111111;
-      border: 1px solid #f0f0f0;
+      color: #000000;
+      border: none;
     }
 
-    .card-white p {
-      color: #666666;
-    }
+    .card-modular-white h3 { color: #000000; }
+    .card-modular-white p { color: #555555; }
 
-    .card-meta-inline {
+    .modular-meta-row {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
       margin-bottom: 1rem;
     }
 
-    .icon-bubble-light {
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .top-badge-orange {
+    .modular-orange-badge {
       font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
       font-weight: 700;
-      color: #f87712;
+      text-transform: uppercase;
+      color: #ff5421;
+      letter-spacing: 0.05em;
     }
 
-    .card-link-orange {
+    .modular-action-link {
       font-size: 13px;
       font-weight: 600;
-      color: #f87712;
-      margin-top: 2rem;
+      color: #ff5421;
       text-decoration: none;
+      margin-top: 1.5rem;
+      display: inline-block;
     }
 
-    .pills-container {
+    .modular-tags-container {
       display: flex;
-      gap: 0.5rem;
+      gap: 6px;
       margin-top: 1.5rem;
     }
 
-    .pill-tag {
-      background: #f5f5f7;
+    .modular-tag-pill {
+      background: #f4f4f6;
       color: #555555;
       font-size: 10px;
       font-weight: 600;
-      letter-spacing: 0.05em;
-      padding: 6px 12px;
-      border-radius: 6px;
+      padding: 4px 10px;
+      border-radius: 4px;
       text-transform: uppercase;
     }
 
-    /* Card Variant 3: Solid Cyan Architectural Block */
-    .card-cyan {
+    /* Card Variant 3: Right Heavy Cyan Architectural Element */
+    .card-alignment-cyan {
       background: #00bdf2;
       color: #000000;
       grid-column: 3;
       grid-row: span 2;
       justify-content: space-between;
-      min-height: 560px;
+      border: none;
+      min-height: 540px;
     }
 
-    .card-cyan h3, .card-cyan p {
+    .card-alignment-cyan h3, .card-alignment-cyan p {
       color: #000000;
     }
 
-    .card-cyan p {
-      color: rgba(0, 0, 0, 0.75);
+    .card-alignment-cyan p {
+      color: rgba(0,0,0,0.7);
     }
 
-    .top-badge-white {
+    .cyan-white-badge {
       font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
       font-weight: 700;
-      background: rgba(255, 255, 255, 0.25);
-      padding: 4px 10px;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.3);
+      padding: 4px 8px;
       border-radius: 4px;
     }
 
-    .price-large-dark {
+    .cyan-price-metric {
       font-family: 'Clash Display', sans-serif;
-      font-size: 36px;
+      font-size: 34px;
       font-weight: 700;
       color: #000000;
-      margin-top: auto;
+      margin-bottom: 1.5rem;
     }
 
-    .price-large-dark span {
+    .cyan-price-metric span {
       font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11px;
+      color: rgba(0,0,0,0.5);
+    }
+
+    .cyan-bottom-tag {
       font-size: 12px;
-      font-weight: 500;
-      color: rgba(0, 0, 0, 0.5);
+      font-weight: 600;
+      color: rgba(0,0,0,0.6);
     }
 
-    .card-bottom-text-dark {
-      font-size: 13px;
-      color: rgba(0, 0, 0, 0.6);
-      font-weight: 500;
-      margin-top: auto;
+    /* --- Retained: Original "Start a Conversation" Form Section --- */
+    .conversation-intake-section {
+      background: #090909;
+      padding: 6rem 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    /* --- Premium Integrated Brand Footer --- */
-    .bcore-footer {
-      background: #0a0a0a;
-      color: #ffffff;
-      padding: 6rem 2rem 2.5rem 2rem;
-      width: 100%;
-    }
-
-    .footer-content {
-      max-width: 1200px;
+    .intake-grid-container {
+      max-width: 1240px;
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .intake-brand-context h2 {
+      font-family: 'Clash Display', sans-serif;
+      font-size: clamp(32px, 4vw, 44px);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .intake-brand-context h2 span {
+      color: #00bdf2;
+    }
+
+    .intake-context-subtext {
+      color: #888888;
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 3rem;
+    }
+
+    .brand-directory-list {
       display: flex;
       flex-direction: column;
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .directory-item {
+      display: flex;
       align-items: center;
-      text-align: center;
+      gap: 1rem;
     }
 
-    .footer-cta-block {
-      margin-bottom: 5rem;
+    .directory-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #666666;
+      display: block;
     }
 
-    .footer-heading {
+    .directory-value {
+      font-size: 14px;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .why-us-panel-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 1.5rem;
+    }
+
+    .why-us-header {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #00bdf2;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .why-us-bullet-item {
+      font-size: 13px;
+      color: #aaaaaa;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .why-us-bullet-item::before {
+      content: '✓';
+      color: #00bdf2;
+    }
+
+    /* Clean White Dynamic Capture Form Card */
+    .smooth-intake-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 3rem;
+      color: #000000;
+    }
+
+    .smooth-intake-card h3 {
       font-family: 'Clash Display', sans-serif;
-      font-size: clamp(32px, 5vw, 48px);
+      font-size: 24px;
       font-weight: 600;
-      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+
+    .smooth-intake-card p {
+      font-size: 13px;
+      color: #777777;
       margin-bottom: 2rem;
     }
 
-    .footer-heading span {
-      color: #f87712;
+    .intake-form-matrix {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
     }
 
-    .btn-lets-talk {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      background: transparent;
-      color: #ffffff;
-      font-family: 'Clash Display', sans-serif;
-      font-weight: 500;
-      font-size: 15px;
-      letter-spacing: 0.05em;
-      padding: 0.9rem 2.2rem;
-      border-radius: 50px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .btn-lets-talk:hover {
-      background: #ffffff;
-      color: #0a0a0a;
-      border-color: #ffffff;
-    }
-
-    .btn-lets-talk .arrow-icon {
-      width: 16px;
-      height: 16px;
-      border: 1px solid currentColor;
-      border-radius: 50%;
+    .form-input-wrapper {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
+      flex-direction: column;
+      gap: 6px;
     }
 
-    .footer-bottom-bar {
-      width: 100%;
-      max-width: 1200px;
-      border-top: 1px solid #1a1a1a;
-      padding-top: 2rem;
+    .form-input-wrapper.span-full {
+      grid-column: span 2;
+    }
+
+    .form-input-wrapper label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #999999;
+      letter-spacing: 0.05em;
+    }
+
+    .form-input-wrapper input, .form-input-wrapper select, .form-input-wrapper textarea {
+      background: #f4f4f6;
+      border: 1px solid #e4e4e7;
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 13.5px;
+      color: #000000;
+      outline: none;
+    }
+
+    .intake-action-submit {
+      grid-column: span 2;
+      background: #00bdf2;
+      color: #ffffff;
+      border: none;
+      padding: 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 1rem;
+    }
+
+    /* --- Retained: Original Clean White Footer Base --- */
+    .pristine-white-footer {
+      background: #ffffff;
+      color: #000000;
+      padding: 4rem 2rem 2rem 2rem;
+      border-top: 1px solid #eeeeee;
+    }
+
+    .footer-base-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .footer-upper-distribution {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid #eeeeee;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-logo-brand {
+      font-family: 'Clash Display', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-horizontal-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-horizontal-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: #666666;
+      text-decoration: none;
+    }
+
+    .footer-horizontal-links a:hover {
+      color: #000000;
+    }
+
+    .footer-lower-compliance-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2rem;
+      font-size: 12px;
+      color: #999999;
       flex-wrap: wrap;
       gap: 1rem;
     }
 
-    .footer-logo {
-      font-family: 'Clash Display', sans-serif;
-      font-weight: 600;
-      font-size: 18px;
-      color: #ffffff;
+    .compliance-links-group {
+      display: flex;
+      gap: 1.5rem;
     }
 
-    .footer-logo span {
-      color: #00bdf2;
+    .compliance-links-group a {
+      color: #999999;
+      text-decoration: none;
     }
 
-    .copyright-text {
-      font-size: 12px;
-      color: #444444;
-      font-weight: 400;
-      letter-spacing: 0.02em;
-    }
-
-    /* --- Media Queries Breakpoint Adaptation Matrix --- */
+    /* --- Responsive System Breakpoints --- */
     @media (max-width: 1024px) {
-      .bcore-grid-wrapper {
+      .asymmetric-pricing-grid {
         grid-template-columns: 1fr 1fr;
       }
-      .card-dark {
+      .card-foundation-dark {
         grid-column: 1;
         grid-row: span 1;
       }
-      .bcore-middle-stack {
+      .center-structural-stack {
         grid-column: 2;
       }
-      .card-cyan {
+      .card-alignment-cyan {
         grid-column: 1 / -1;
         grid-row: span 1;
-        min-height: 420px;
+        min-height: auto;
+      }
+      .intake-grid-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
       }
     }
 
     @media (max-width: 768px) {
-      .nav-links, .nav-cta-wrapper {
+      .center-pill-menu, .orange-cta-btn {
         display: none;
       }
-      
-      .hamburger-trigger {
+
+      .mobile-hamburger-trigger {
         display: flex;
       }
 
-      .bcore-pricing-section {
-        padding: 8rem 1.5rem 4rem 1.5rem;
-      }
-      .bcore-grid-wrapper {
+      .asymmetric-pricing-grid {
         grid-template-columns: 1fr;
       }
-      .card-dark, .bcore-middle-stack, .card-cyan {
+
+      .card-foundation-dark, .center-structural-stack, .card-alignment-cyan {
         grid-column: 1;
       }
-      
-      .footer-bottom-bar {
+
+      .intake-form-matrix {
+        grid-template-columns: 1fr;
+      }
+
+      .form-input-wrapper.span-full {
+        grid-column: span 1;
+      }
+
+      .intake-action-submit {
+        grid-column: span 1;
+      }
+
+      .footer-upper-distribution, .footer-lower-compliance-row {
         flex-direction: column;
+        align-items: flex-start;
         gap: 1.5rem;
+      }
+
+      .footer-horizontal-links {
+        flex-direction: column;
+        gap: 1rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <nav class="bcore-navbar">
-    <div class="nav-container">
-      <a href="/" class="nav-logo">BridgeCore<span>.</span></a>
+  <nav class="brand-navbar">
+    <div class="nav-inner-container">
+      <a href="/" class="brand-logo-wrapper">
+        <div class="brand-logo-square"></div>
+        Bridgecore
+      </a>
       
-      <ul class="nav-links">
-        <li class="nav-item"><a href="/">Home</a></li>
-        <li class="nav-item"><a href="/services.html">Services</a></li>
-        <li class="nav-item active"><a href="/pricing.html">Pricing</a></li>
+      <ul class="center-pill-menu">
+        <li class="pill-nav-item"><a href="/">Impact</a></li>
+        <li class="pill-nav-item"><a href="/services.html">Services</a></li>
+        <li class="pill-nav-item"><a href="/process.html">Process</a></li>
+        <li class="pill-nav-item"><a href="/founder.html">Founder</a></li>
+        <li class="pill-nav-item active"><a href="/pricing.html">Pricing</a></li>
+        <li class="pill-nav-item"><a href="#contact">Contact</a></li>
       </ul>
 
-      <div class="nav-cta-wrapper">
-        <a href="#talk" class="nav-cta-btn">Get Started</a>
-      </div>
+      <a href="#contact" class="orange-cta-btn">Work With Us</a>
 
-      <button class="hamburger-trigger" id="mobile-menu-trigger" aria-label="Toggle navigation overlay menu">
-        <span class="hamburger-line line-top"></span>
-        <span class="hamburger-line line-mid"></span>
-        <span class="hamburger-line line-bot"></span>
+      <button class="mobile-hamburger-trigger" id="hamburger-activation-button" aria-label="Toggle navigation structural drawer">
+        <span class="hamburger-wire wire-top"></span>
+        <span class="hamburger-wire wire-mid"></span>
+        <span class="hamburger-wire wire-bot"></span>
       </button>
     </div>
   </nav>
 
-  <div class="mobile-nav-overlay" id="mobile-navigation-canvas">
-    <ul class="mobile-links-wrapper">
-      <li class="mobile-nav-item"><a href="/">Home</a></li>
-      <li class="mobile-nav-item"><a href="/services.html">Services</a></li>
-      <li class="mobile-nav-item"><a href="/pricing.html" style="color: #00bdf2;">Pricing</a></li>
+  <div class="mobile-navigation-drawer" id="mobile-canvas-drawer">
+    <ul class="mobile-links-stack">
+      <li class="mobile-stack-item"><a href="/">Impact</a></li>
+      <li class="mobile-stack-item"><a href="/services.html">Services</a></li>
+      <li class="mobile-stack-item"><a href="/process.html">Process</a></li>
+      <li class="mobile-stack-item"><a href="/founder.html">Founder</a></li>
+      <li class="mobile-stack-item"><a href="/pricing.html" style="color: #00bdf2;">Pricing</a></li>
+      <li class="mobile-stack-item"><a href="#contact">Contact</a></li>
     </ul>
-    <a href="#talk" class="mobile-cta-btn" id="mobile-cta-trigger">Get Started</a>
+    <a href="#contact" class="orange-cta-btn" style="text-align: center; display: block;" id="mobile-drawer-cta">Work With Us</a>
   </div>
 
-  <main class="bcore-pricing-section">
-    <div class="bcore-grid-wrapper">
+  <main class="pricing-canvas-wrapper">
+    <div class="pricing-intro-header">
+      <span>Elastic CX Framework</span>
+      <h1>Transparent execution models</h1>
+    </div>
+
+    <div class="asymmetric-pricing-grid">
       
-      <div class="bcore-card card-dark">
+      <div class="pricing-architecture-card card-foundation-dark">
         <div>
-          <div class="icon-bubble">
+          <div class="foundation-icon-box">
             <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
           </div>
           <h3>Phase 1 Setup</h3>
           <p>We completely map, audit, and engineer your front-line communication framework before any operator handles a single inquiry.</p>
           
-          <ul class="feature-list">
-            <li class="feature-item">Comprehensive Lifecycle Audit</li>
-            <li class="feature-item">Custom Brand Voice Playbook</li>
-            <li class="feature-item">Helpdesk & CRM Automation</li>
+          <ul class="foundation-check-list">
+            <li class="foundation-check-item">Comprehensive Lifecycle Audit</li>
+            <li class="foundation-check-item">Custom Brand Voice Playbook</li>
+            <li class="foundation-check-item">Helpdesk & CRM Automation</li>
           </ul>
         </div>
         
         <div>
-          <div class="price-large">₦200,000 <span class="price-subtext">/ ONE-TIME</span></div>
-          <div class="card-bottom-label">Core Foundation</div>
+          <div class="foundation-price-metric">₦200,000 <span>/ ONE-TIME</span></div>
+          <div class="foundation-bottom-tag">Core Foundation</div>
         </div>
       </div>
 
-      <div class="bcore-middle-stack">
+      <div class="center-structural-stack">
         
-        <div class="bcore-card card-white">
-          <div class="card-meta-inline">
-            <div class="icon-bubble-light">
-              <span style="font-size: 20px;">👥</span>
-            </div>
-            <span class="top-badge-orange">7% One-Time</span>
+        <div class="pricing-architecture-card card-modular-white">
+          <div class="modular-meta-row">
+            <span style="font-size: 20px;">👥</span>
+            <span class="modular-orange-badge">7% One-Time</span>
           </div>
           <h3>Talent Placement</h3>
           <p>Sourcing, interviewing, and matching you with elite CX specialists from our pre-vetted database to join your direct payroll.</p>
-          <a href="#talk" class="card-link-orange">Pre-trained on your repository →</a>
+          <a href="#contact" class="modular-action-link">Pre-trained on your repository →</a>
         </div>
 
-        <div class="bcore-card card-white">
-          <div class="card-meta-inline">
-            <div class="icon-bubble-light">
-              <span style="font-size: 20px;">%</span>
-            </div>
+        <div class="pricing-architecture-card" style="background: rgba(255,255,255,0.02);">
+          <div class="modular-meta-row">
+            <span style="font-size: 20px; color: #00bdf2;">%</span>
           </div>
           <h3>The BridgeCore Standard</h3>
           <p>Every strategy we deploy builds an airtight communication firewall engineered to secure retention and scale your revenue.</p>
-          <div class="pills-container">
-            <span class="pill-tag">Revenue Protection</span>
-            <span class="pill-tag">Churn Elimination</span>
+          <div class="modular-tags-container">
+            <span class="modular-tag-pill" style="background: rgba(255,255,255,0.05); color: #aaa;">Revenue Protection</span>
+            <span class="modular-tag-pill" style="background: rgba(255,255,255,0.05); color: #aaa;">Churn Elimination</span>
           </div>
         </div>
 
       </div>
 
-      <div class="bcore-card card-cyan">
+      <div class="pricing-architecture-card card-alignment-cyan">
         <div>
-          <div class="card-meta-inline">
-            <div class="icon-bubble-light" style="opacity: 0.6;">
-              <span style="font-size: 20px; color: #000;">⚡</span>
-            </div>
-            <span class="top-badge-white">High ROI</span>
+          <div class="modular-meta-row">
+            <span style="font-size: 20px; color: #000;">⚡</span>
+            <span class="cyan-white-badge">High ROI</span>
           </div>
           <h3>Team Alignment</h3>
           <p>For brands with an existing internal team. We run an intensive workshop to onboard and certify your current staff directly into the new architecture.</p>
         </div>
 
         <div>
-          <div class="price-large-dark">₦100,000 <span>/ ONE-TIME PER STAFF</span></div>
-          <div class="card-bottom-text-dark">Upgrade your existing team seamlessly</div>
+          <div class="cyan-price-metric">₦100,000 <span>/ ONE-TIME PER STAFF</span></div>
+          <div class="cyan-bottom-tag">Upgrade your existing team seamlessly</div>
         </div>
       </div>
 
     </div>
   </main>
 
-  <footer class="bcore-footer" id="talk">
-    <div class="footer-content">
+  <section class="conversation-intake-section" id="contact">
+    <div class="intake-grid-container">
       
-      <div class="footer-cta-block">
-        <h2 class="footer-heading">Ready to protect your <span>revenue?</span></h2>
-        <a href="https://wa.me/message/YOUR_LINK" class="btn-lets-talk">
-          <span>Let's Talk</span>
-          <span class="arrow-icon">→</span>
-        </a>
+      <div class="intake-brand-context">
+        <h2>Ready to Stop Losing Customers to <span>Poor Complaint Handling?</span></h2>
+        <p class="intake-context-subtext">Tell us about your business and we'll show you exactly how Bridgecore can help you retain more customers and recover lost revenue within 30 days.</p>
+        
+        <div class="brand-directory-list">
+          <div class="directory-item">
+            <div>
+              <span class="directory-label">Email Us</span>
+              <a href="mailto:bridgecoreng@outlook.com" class="directory-value">bridgecoreng@outlook.com</a>
+            </div>
+          </div>
+          <div class="directory-item">
+            <div>
+              <span class="directory-label">Reach Aderinola Directly</span>
+              <a href="mailto:mordatallahawwal@gmail.com" class="directory-value">mordatallahawwal@gmail.com</a>
+            </div>
+          </div>
+          <div class="directory-item">
+            <div>
+              <span class="directory-label">WhatsApp</span>
+              <a href="https://wa.me/2349019214642" class="directory-value">09019214642</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="why-us-panel-box">
+          <div class="why-us-header">Why Businesses Choose Bridgecore</div>
+          <div class="why-us-bullet-item">CAC-registered, professionally run business</div>
+          <div class="why-us-bullet-item">Response within 24 hours of enquiry</div>
+          <div class="why-us-bullet-item">Flexible plans starting from ₦35,000/month</div>
+        </div>
       </div>
 
-      <div class="footer-bottom-bar">
-        <div class="footer-logo">BridgeCore<span>.</span></div>
-        <div class="copyright-text">© 2026 BridgeCore Solution Limited. All rights reserved.</div>
+      <div class="smooth-intake-card">
+        <h3>Start a Conversation</h3>
+        <p>Fill in your details and we'll get back to you within 24 hours.</p>
+        
+        <form class="intake-form-matrix" onsubmit="event.preventDefault();">
+          <div class="form-input-wrapper">
+            <label>Full Name *</label>
+            <input type="text" placeholder="Chukwuemeka Okonkwo" required>
+          </div>
+          <div class="form-input-wrapper">
+            <label>Company Name *</label>
+            <input type="text" placeholder="Zeal Fintech Ltd." required>
+          </div>
+          <div class="form-input-wrapper">
+            <label>Email Address *</label>
+            <input type="email" placeholder="ceo@zealfintech.ng" required>
+          </div>
+          <div class="form-input-wrapper">
+            <label>WhatsApp / Phone *</label>
+            <input type="text" placeholder="+234 801 234 5678" required>
+          </div>
+          <div class="form-input-wrapper span-full">
+            <label>Industry</label>
+            <select>
+              <option>Select your Industry</option>
+              <option>E-commerce / Retail</option>
+              <option>Fintech / Finance</option>
+              <option>Logistics / Tech Stack</option>
+            </select>
+          </div>
+          <div class="form-input-wrapper span-full">
+            <label>Tell us about your challenge *</label>
+            <textarea rows="4" placeholder="Describe your current customer complaint situation — volume, channels, main pain points..." required></textarea>
+          </div>
+          <button type="submit" class="intake-action-submit">Send My Enquiry ⌂</button>
+        </form>
       </div>
 
+    </div>
+  </section>
+
+  <footer class="pristine-white-footer">
+    <div class="footer-base-inner">
+      <div class="footer-upper-distribution">
+        <div class="footer-logo-brand">
+          <div class="brand-logo-square"></div>
+          Bridgecore.
+        </div>
+        <ul class="footer-horizontal-links">
+          <li><a href="/">Impact</a></li>
+          <li><a href="/services.html">Services</a></li>
+          <li><a href="/process.html">Process</a></li>
+          <li><a href="/founder.html">Founder</a></li>
+          <li><a href="/pricing.html">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-lower-compliance-row">
+        <div>© 2026 Bridgecore Solution. CAC Registered. All rights reserved.</div>
+        <div class="compliance-links-group">
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms</a>
+        </div>
+      </div>
     </div>
   </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const menuTrigger = document.getElementById('mobile-menu-trigger');
-      const navCanvas = document.getElementById('mobile-navigation-canvas');
-      const mobileCta = document.getElementById('mobile-cta-trigger');
-      const overlayLinks = document.querySelectorAll('.mobile-nav-item a');
+      const menuTrigger = document.getElementById('hamburger-activation-button');
+      const navCanvas = document.getElementById('mobile-canvas-drawer');
+      const mobileCta = document.getElementById('mobile-drawer-cta');
+      const navigationLinks = document.querySelectorAll('.mobile-stack-item a');
 
-      function toggleMobileNavigation() {
+      function toggleResponsiveMenu() {
         menuTrigger.classList.toggle('is-active');
         navCanvas.classList.toggle('is-open');
         document.body.style.overflow = navCanvas.classList.contains('is-open') ? 'hidden' : '';
       }
 
-      menuTrigger.addEventListener('click', toggleMobileNavigation);
-      mobileCta.addEventListener('click', toggleMobileNavigation);
+      menuTrigger.addEventListener('click', toggleResponsiveMenu);
+      mobileCta.addEventListener('click', toggleResponsiveMenu);
       
-      overlayLinks.forEach(link => {
-        link.addEventListener('click', toggleMobileNavigation);
+      navigationLinks.forEach(link => {
+        link.addEventListener('click', toggleResponsiveMenu);
       });
     });
   </script>
