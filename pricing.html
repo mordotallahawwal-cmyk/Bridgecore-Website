@@ -1,965 +1,225 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pricing Framework — BridgeCore Solution</title>
+  <title>Bridgecore — Pricing & Execution Framework</title>
   
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-  <meta name="theme-color" content="#000000">
-
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap">
-
+  <!-- Favicon Asset Link -->
+  <link rel="icon" type="image/jpeg" href="WhatsApp Image 2026-04-11 at 10.45.13 (1).jpeg">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* --- Core Engine & Layout Tokens --- */
-    * { 
-      box-sizing: border-box; 
-      margin: 0; 
-      padding: 0; 
-    }
-
-    html, body {
-      background: #000000;
-      color: #ffffff;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* --- Retained: Original Dark Premium Navbar Style --- */
-    .brand-navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 90px;
-      background: #000000;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-inner-container {
-      width: 100%;
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .brand-logo-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'Clash Display', sans-serif;
-      font-weight: 700;
-      font-size: 24px;
-      color: #ffffff;
-      text-decoration: none;
-    }
-
-    .brand-logo-square {
-      width: 12px;
-      height: 12px;
-      background: #00bdf2;
-      border-radius: 2px;
-    }
-
-    /* Original Center Pill Menu Container */
-    .center-pill-menu {
-      display: flex;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 6px 12px;
-      border-radius: 100px;
-      list-style: none;
-      gap: 0.5rem;
-    }
-
-    .pill-nav-item a {
-      font-size: 13px;
-      font-weight: 500;
-      color: #aaaaaa;
-      padding: 8px 16px;
-      text-decoration: none;
-      border-radius: 50px;
-      transition: all 0.2s ease;
-    }
-
-    .pill-nav-item a:hover, .pill-nav-item.active a {
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    /* Original High Contrast Orange Action CTA */
-    .orange-cta-btn {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      color: #ffffff;
-      background: #ff5421;
-      padding: 0.85rem 1.8rem;
-      border-radius: 50px;
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: opacity 0.2s ease;
-    }
-
-    .orange-cta-btn:hover {
-      opacity: 0.9;
-    }
-
-    /* --- Added: Responsive Hamburger Icon System --- */
-    .mobile-hamburger-trigger {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      width: 24px;
-      height: 16px;
-      position: relative;
-      z-index: 1010;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .hamburger-wire {
-      width: 100%;
-      height: 2px;
-      background-color: #ffffff;
-      border-radius: 2px;
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-    }
-
-    .mobile-hamburger-trigger.is-active .wire-top {
-      transform: translateY(7px) rotate(45deg);
-    }
-
-    .mobile-hamburger-trigger.is-active .wire-mid {
-      opacity: 0;
-    }
-
-    .mobile-hamburger-trigger.is-active .wire-bot {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-
-    /* Mobile Menu Drawer Canvas Overlay */
-    .mobile-navigation-drawer {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: #000000;
-      z-index: 999;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 3rem;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-    }
-
-    .mobile-navigation-drawer.is-open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .mobile-links-stack {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1.75rem;
-      margin-bottom: 3rem;
-    }
-
-    .mobile-stack-item a {
-      font-family: 'Clash Display', sans-serif;
-      font-size: 36px;
-      font-weight: 600;
-      color: #ffffff;
-      text-decoration: none;
-    }
-
-    /* --- New Asymmetric Dynamic Pricing Layout Body --- */
-    .pricing-canvas-wrapper {
-      padding: 10rem 2rem 6rem 2rem;
-      max-width: 1240px;
-      margin: 0 auto;
-    }
-
-    .pricing-intro-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .pricing-intro-header span {
-      font-family: 'Clash Display', sans-serif;
-      color: #00bdf2;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-weight: 600;
-    }
-
-    .pricing-intro-header h1 {
-      font-family: 'Clash Display', sans-serif;
-      font-size: clamp(36px, 5vw, 54px);
-      font-weight: 600;
-      margin-top: 0.5rem;
-      letter-spacing: -0.02em;
-    }
-
-    .asymmetric-pricing-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 1.2fr 1.15fr;
-      gap: 2rem;
-      align-items: stretch;
-    }
-
-    .pricing-architecture-card {
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 24px;
-      padding: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-
-    .pricing-architecture-card h3 {
-      font-family: 'Clash Display', sans-serif;
-      font-size: 26px;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    .pricing-architecture-card p {
-      font-size: 14px;
-      line-height: 1.6;
-      color: #aaaaaa;
-    }
-
-    /* Card Variant 1: Left Heavy Dark Foundation Element */
-    .card-foundation-dark {
-      background: #0d0d0d;
-      grid-column: 1;
-      grid-row: span 2;
-      justify-content: space-between;
-      min-height: 540px;
-    }
-
-    .foundation-icon-box {
-      width: 40px;
-      height: 40px;
-      background: rgba(0, 189, 242, 0.1);
-      border: 1px solid rgba(0, 189, 242, 0.2);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .foundation-icon-box svg {
-      width: 18px;
-      height: 18px;
-      fill: #00bdf2;
-    }
-
-    .foundation-check-list {
-      list-style: none;
-      margin: 2.5rem 0;
-    }
-
-    .foundation-check-item {
-      font-size: 13.5px;
-      color: #cccccc;
-      margin-bottom: 0.8rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .foundation-check-item::before {
-      content: '✓';
-      color: #00bdf2;
-      font-weight: 700;
-    }
-
-    .foundation-price-metric {
-      font-family: 'Clash Display', sans-serif;
-      font-size: 36px;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 1.5rem;
-    }
-
-    .foundation-price-metric span {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 11px;
-      color: #666666;
-      letter-spacing: 0.05em;
-    }
-
-    .foundation-bottom-tag {
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #00bdf2;
-      font-weight: 700;
-    }
-
-    /* Middle Layout Column Stack Elements */
-    .center-structural-stack {
-      grid-column: 2;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .card-modular-white {
-      background: #ffffff;
-      color: #000000;
-      border: none;
-    }
-
-    .card-modular-white h3 { color: #000000; }
-    .card-modular-white p { color: #555555; }
-
-    .modular-meta-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-
-    .modular-orange-badge {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: #ff5421;
-      letter-spacing: 0.05em;
-    }
-
-    .modular-action-link {
-      font-size: 13px;
-      font-weight: 600;
-      color: #ff5421;
-      text-decoration: none;
-      margin-top: 1.5rem;
-      display: inline-block;
-    }
-
-    .modular-tags-container {
-      display: flex;
-      gap: 6px;
-      margin-top: 1.5rem;
-    }
-
-    .modular-tag-pill {
-      background: #f4f4f6;
-      color: #555555;
-      font-size: 10px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 4px;
-      text-transform: uppercase;
-    }
-
-    /* Card Variant 3: Right Heavy Cyan Architectural Element */
-    .card-alignment-cyan {
-      background: #00bdf2;
-      color: #000000;
-      grid-column: 3;
-      grid-row: span 2;
-      justify-content: space-between;
-      border: none;
-      min-height: 540px;
-    }
-
-    .card-alignment-cyan h3, .card-alignment-cyan p {
-      color: #000000;
-    }
-
-    .card-alignment-cyan p {
-      color: rgba(0,0,0,0.7);
-    }
-
-    .cyan-white-badge {
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      background: rgba(255, 255, 255, 0.3);
-      padding: 4px 8px;
-      border-radius: 4px;
-    }
-
-    .cyan-price-metric {
-      font-family: 'Clash Display', sans-serif;
-      font-size: 34px;
-      font-weight: 700;
-      color: #000000;
-      margin-bottom: 1.5rem;
-    }
-
-    .cyan-price-metric span {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 11px;
-      color: rgba(0,0,0,0.5);
-    }
-
-    .cyan-bottom-tag {
-      font-size: 12px;
-      font-weight: 600;
-      color: rgba(0,0,0,0.6);
-    }
-
-    /* --- Retained: Original "Start a Conversation" Form Section --- */
-    .conversation-intake-section {
-      background: #090909;
-      padding: 6rem 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .intake-grid-container {
-      max-width: 1240px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .intake-brand-context h2 {
-      font-family: 'Clash Display', sans-serif;
-      font-size: clamp(32px, 4vw, 44px);
-      font-weight: 600;
-      line-height: 1.15;
-      margin-bottom: 1.5rem;
-    }
-
-    .intake-brand-context h2 span {
-      color: #00bdf2;
-    }
-
-    .intake-context-subtext {
-      color: #888888;
-      font-size: 15px;
-      line-height: 1.6;
-      margin-bottom: 3rem;
-    }
-
-    .brand-directory-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      margin-bottom: 3rem;
-    }
-
-    .directory-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .directory-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #666666;
-      display: block;
-    }
-
-    .directory-value {
-      font-size: 14px;
-      color: #ffffff;
-      text-decoration: none;
-    }
-
-    .why-us-panel-box {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 16px;
-      padding: 1.5rem;
-    }
-
-    .why-us-header {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: #00bdf2;
-      letter-spacing: 0.1em;
-      margin-bottom: 1rem;
-    }
-
-    .why-us-bullet-item {
-      font-size: 13px;
-      color: #aaaaaa;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .why-us-bullet-item::before {
-      content: '✓';
-      color: #00bdf2;
-    }
-
-    /* Clean White Dynamic Capture Form Card */
-    .smooth-intake-card {
-      background: #ffffff;
-      border-radius: 24px;
-      padding: 3rem;
-      color: #000000;
-    }
-
-    .smooth-intake-card h3 {
-      font-family: 'Clash Display', sans-serif;
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
-
-    .smooth-intake-card p {
-      font-size: 13px;
-      color: #777777;
-      margin-bottom: 2rem;
-    }
-
-    .intake-form-matrix {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-    }
-
-    .form-input-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .form-input-wrapper.span-full {
-      grid-column: span 2;
-    }
-
-    .form-input-wrapper label {
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: #999999;
-      letter-spacing: 0.05em;
-    }
-
-    .form-input-wrapper input, .form-input-wrapper select, .form-input-wrapper textarea {
-      background: #f4f4f6;
-      border: 1px solid #e4e4e7;
-      padding: 0.85rem 1rem;
-      border-radius: 8px;
-      font-family: inherit;
-      font-size: 13.5px;
-      color: #000000;
-      outline: none;
-    }
-
-    .intake-action-submit {
-      grid-column: span 2;
-      background: #00bdf2;
-      color: #ffffff;
-      border: none;
-      padding: 1rem;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-top: 1rem;
-    }
-
-    /* --- Retained: Original Clean White Footer Base --- */
-    .pristine-white-footer {
-      background: #ffffff;
-      color: #000000;
-      padding: 4rem 2rem 2rem 2rem;
-      border-top: 1px solid #eeeeee;
-    }
-
-    .footer-base-inner {
-      max-width: 1240px;
-      margin: 0 auto;
-    }
-
-    .footer-upper-distribution {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 2.5rem;
-      border-bottom: 1px solid #eeeeee;
-      flex-wrap: wrap;
-      gap: 2rem;
-    }
-
-    .footer-logo-brand {
-      font-family: 'Clash Display', sans-serif;
-      font-weight: 700;
-      font-size: 20px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .footer-horizontal-links {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-
-    .footer-horizontal-links a {
-      font-size: 13px;
-      font-weight: 500;
-      color: #666666;
-      text-decoration: none;
-    }
-
-    .footer-horizontal-links a:hover {
-      color: #000000;
-    }
-
-    .footer-lower-compliance-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 2rem;
-      font-size: 12px;
-      color: #999999;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .compliance-links-group {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .compliance-links-group a {
-      color: #999999;
-      text-decoration: none;
-    }
-
-    /* --- Responsive System Breakpoints --- */
-    @media (max-width: 1024px) {
-      .asymmetric-pricing-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-      .card-foundation-dark {
-        grid-column: 1;
-        grid-row: span 1;
-      }
-      .center-structural-stack {
-        grid-column: 2;
-      }
-      .card-alignment-cyan {
-        grid-column: 1 / -1;
-        grid-row: span 1;
-        min-height: auto;
-      }
-      .intake-grid-container {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .center-pill-menu, .orange-cta-btn {
-        display: none;
-      }
-
-      .mobile-hamburger-trigger {
-        display: flex;
-      }
-
-      .asymmetric-pricing-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .card-foundation-dark, .center-structural-stack, .card-alignment-cyan {
-        grid-column: 1;
-      }
-
-      .intake-form-matrix {
-        grid-template-columns: 1fr;
-      }
-
-      .form-input-wrapper.span-full {
-        grid-column: span 1;
-      }
-
-      .intake-action-submit {
-        grid-column: span 1;
-      }
-
-      .footer-upper-distribution, .footer-lower-compliance-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.5rem;
-      }
-
-      .footer-horizontal-links {
-        flex-direction: column;
-        gap: 1rem;
-      }
-    }
+    body { font-family: 'Inter', sans-serif; }
   </style>
 </head>
-<body>
+<body class="bg-[#141517] text-white antialiased flex flex-col min-h-screen">
 
-  <nav class="brand-navbar">
-    <div class="nav-inner-container">
-      <a href="/" class="brand-logo-wrapper">
-        <div class="brand-logo-square"></div>
-        Bridgecore
-      </a>
+  <!-- 1. HEADER / NAVIGATION BAR -->
+  <header class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between z-50 relative">
+    <!-- Logo Section -->
+    <div class="flex items-center space-x-2 flex-shrink-0">
+      <img src="WhatsApp Image 2026-04-11 at 10.45.13 (1).jpeg" alt="Bcore Logo" class="h-8 sm:h-10 w-auto object-contain">
+      <span class="text-xl sm:text-2xl font-bold tracking-tight text-white">Bridgecore</span>
+    </div>
+
+    <!-- Desktop Navigation Links (Hidden on mobile) -->
+    <nav class="hidden md:flex items-center space-x-1 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-2 py-1.5">
+      <a href="index.html#impact" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white px-4 py-1.5 rounded-full transition">Impact</a>
+      <a href="services.html" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white px-4 py-1.5 rounded-full transition">Services</a>
+      <a href="process.html" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white px-4 py-1.5 rounded-full transition">Process</a>
+      <a href="founder.html" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white px-4 py-1.5 rounded-full transition">Founder</a>
+      <a href="pricing.html" class="text-xs font-semibold tracking-wider text-white bg-white/10 px-4 py-1.5 rounded-full transition">Pricing</a>
+      <a href="index.html#contact" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white px-4 py-1.5 rounded-full transition">Contact</a>
+    </nav>
+
+    <!-- Header CTA Button & Hamburger Trigger -->
+    <div class="flex items-center space-x-3 flex-shrink-0">
+      <a href="index.html#contact" class="bg-[#FF5E3A] hover:bg-[#E44A26] text-white text-[10px] sm:text-xs font-bold tracking-wider px-4 sm:px-6 py-2.5 sm:py-3 rounded-full shadow-lg transition duration-300 inline-block">WORK WITH US</a>
       
-      <ul class="center-pill-menu">
-        <li class="pill-nav-item"><a href="/">Impact</a></li>
-        <li class="pill-nav-item"><a href="/services.html">Services</a></li>
-        <li class="pill-nav-item"><a href="/process.html">Process</a></li>
-        <li class="pill-nav-item"><a href="/founder.html">Founder</a></li>
-        <li class="pill-nav-item active"><a href="/pricing.html">Pricing</a></li>
-        <li class="pill-nav-item"><a href="#contact">Contact</a></li>
-      </ul>
-
-      <a href="#contact" class="orange-cta-btn">Work With Us</a>
-
-      <button class="mobile-hamburger-trigger" id="hamburger-activation-button" aria-label="Toggle navigation structural drawer">
-        <span class="hamburger-wire wire-top"></span>
-        <span class="hamburger-wire wire-mid"></span>
-        <span class="hamburger-wire wire-bot"></span>
+      <!-- Hamburger Icon Button (Only shows on mobile) -->
+      <button id="hamburger-btn" class="md:hidden text-white hover:text-[#FF5E3A] focus:outline-none p-1 transition" aria-label="Toggle Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
       </button>
     </div>
-  </nav>
 
-  <div class="mobile-navigation-drawer" id="mobile-canvas-drawer">
-    <ul class="mobile-links-stack">
-      <li class="mobile-stack-item"><a href="/">Impact</a></li>
-      <li class="mobile-stack-item"><a href="/services.html">Services</a></li>
-      <li class="mobile-stack-item"><a href="/process.html">Process</a></li>
-      <li class="mobile-stack-item"><a href="/founder.html">Founder</a></li>
-      <li class="mobile-stack-item"><a href="/pricing.html" style="color: #00bdf2;">Pricing</a></li>
-      <li class="mobile-stack-item"><a href="#contact">Contact</a></li>
-    </ul>
-    <a href="#contact" class="orange-cta-btn" style="text-align: center; display: block;" id="mobile-drawer-cta">Work With Us</a>
-  </div>
-
-  <main class="pricing-canvas-wrapper">
-    <div class="pricing-intro-header">
-      <span>Elastic CX Framework</span>
-      <h1>Transparent execution models</h1>
+    <!-- Mobile Dropdown Menu (Pops out below the header line) -->
+    <div id="mobile-dropdown" class="hidden absolute top-full left-0 w-full bg-gray-900/95 backdrop-blur-xl border-b border-white/10 flex flex-col p-6 space-y-4 z-40 md:hidden">
+      <a href="index.html#impact" class="text-sm font-medium text-gray-300 hover:text-white transition py-1 border-b border-white/5">Impact</a>
+      <a href="services.html" class="text-sm font-medium text-gray-300 hover:text-white transition py-1 border-b border-white/5">Services</a>
+      <a href="process.html" class="text-sm font-medium text-gray-300 hover:text-white transition py-1 border-b border-white/5">Process</a>
+      <a href="founder.html" class="text-sm font-medium text-gray-300 hover:text-white transition py-1 border-b border-white/5">Founder</a>
+      <a href="pricing.html" class="text-sm font-medium text-white transition py-1 border-b border-white/5">Pricing</a>
+      <a href="index.html#contact" class="text-sm font-medium text-gray-300 hover:text-white transition py-1">Contact</a>
     </div>
+  </header>
 
-    <div class="asymmetric-pricing-grid">
-      
-      <div class="pricing-architecture-card card-foundation-dark">
-        <div>
-          <div class="foundation-icon-box">
-            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
+  <!-- 2. CORE PHILOSOPHY HERO SECTION -->
+  <main class="flex-grow">
+    <section class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="max-w-3xl mx-auto mb-16">
+        <span class="text-[#FF5E3A] uppercase tracking-widest text-xs font-bold bg-[#FF5E3A]/10 px-4 py-1.5 rounded-full inline-block mb-6">Our Pricing Philosophy</span>
+        <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+          We don't believe in just selling bodies. <br class="hidden md:inline">We believe in <span class="text-[#FF5E3A]">building engines.</span>
+        </h1>
+        <p class="text-gray-400 text-base sm:text-lg md:text-xl font-normal leading-relaxed">
+          Our execution framework is entirely elastic to fit growing brands:
+        </p>
+      </div>
+
+      <!-- 3. TWO-COLUMN ARCHITECTURAL BREAKDOWN -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto text-left mb-24">
+        <!-- Mechanical Framework Block 1 -->
+        <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm shadow-xl flex flex-col justify-between">
+          <div>
+            <div class="h-10 w-10 rounded-xl bg-[#FF5E3A]/20 flex items-center justify-center text-[#FF5E3A] font-bold text-lg mb-6">1</div>
+            <h3 class="text-xl font-bold mb-3 text-white">We build the machine first (Phase 1)</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              We single-handedly audit your operations, map the journey, and wire your helpdesk architecture.
+            </p>
           </div>
-          <h3>Phase 1 Setup</h3>
-          <p>We completely map, audit, and engineer your front-line communication framework before any operator handles a single inquiry.</p>
+          <div class="mt-6 pt-4 border-t border-white/5 text-xs text-gray-500 uppercase tracking-wider font-semibold">Step One Optimization</div>
+        </div>
+
+        <!-- Mechanical Framework Block 2 -->
+        <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm shadow-xl flex flex-col justify-between">
+          <div>
+            <div class="h-10 w-10 rounded-xl bg-[#FF5E3A]/20 flex items-center justify-center text-[#FF5E3A] font-bold text-lg mb-6">2</div>
+            <h3 class="text-xl font-bold mb-3 text-white">We provide the operator for just 7%</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Once the system is built, we source, interview, and align an elite specialist from our talent network for a flat 7% annual placement fee. They join your direct payroll, already certified on your custom system.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/5 text-xs text-gray-500 uppercase tracking-wider font-semibold">Step Two Deployment</div>
+        </div>
+
+        <!-- Mechanical Framework Block 3 (Spans Full Width on Desktop for balance) -->
+        <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm shadow-xl lg:col-span-2">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+            <div class="max-w-2xl">
+              <div class="h-10 w-10 rounded-xl bg-[#FF5E3A]/20 flex items-center justify-center text-[#FF5E3A] font-bold text-lg mb-6 sm:mb-4">Or</div>
+              <h3 class="text-xl font-bold mb-3 text-white">Already have a team? We upgrade them</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                If you already have internal staff, we run a hands-on alignment sprint to upgrade your existing team to the BridgeCore standard.
+              </p>
+            </div>
+            <div class="flex-shrink-0 text-xs text-gray-500 uppercase tracking-wider font-semibold sm:text-right border-t sm:border-t-0 pt-4 sm:pt-0 border-white/5">Alternative Alignment Sprint</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. ELASTIC PRICING MATRIX GRID -->
+      <div class="max-w-6xl mx-auto mb-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left items-stretch">
           
-          <ul class="foundation-check-list">
-            <li class="foundation-check-item">Comprehensive Lifecycle Audit</li>
-            <li class="foundation-check-item">Custom Brand Voice Playbook</li>
-            <li class="foundation-check-item">Helpdesk & CRM Automation</li>
-          </ul>
-        </div>
-        
-        <div>
-          <div class="foundation-price-metric">₦200,000 <span>/ ONE-TIME</span></div>
-          <div class="foundation-bottom-tag">Core Foundation</div>
+          <!-- Phase 1 Setup Card -->
+          <div class="bg-white/5 border border-white/10 p-8 rounded-3xl flex flex-col justify-between relative shadow-xl hover:border-white/20 transition duration-300">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-widest text-[#FF5E3A] block mb-2">Foundation</span>
+              <h3 class="text-2xl font-bold mb-3">Phase 1 Setup</h3>
+              <p class="text-gray-400 text-xs mb-6 leading-relaxed">Compulsory infrastructure design to identify retention leaks and build playbooks.</p>
+              <div class="flex items-baseline mb-2">
+                <span class="text-4xl font-black tracking-tight text-white">₦200,000</span>
+              </div>
+              <span class="text-gray-500 text-xs uppercase font-semibold tracking-wider block mb-6">One-time flat fee</span>
+              <ul class="space-y-3.5 text-sm text-gray-300 border-t border-white/5 pt-6">
+                <li class="flex items-start"><span class="text-[#FF5E3A] mr-2">✓</span> Full Operational CX Audit</li>
+                <li class="flex items-start"><span class="text-[#FF5E3A] mr-2">✓</span> Complete Journey Mapping</li>
+                <li class="flex items-start"><span class="text-[#FF5E3A] mr-2">✓</span> Helpdesk Architecture Wiring</li>
+              </ul>
+            </div>
+            <a href="index.html#contact" class="mt-8 block text-center bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-6 rounded-xl transition">Secure Audit</a>
+          </div>
+
+          <!-- Tier 1 Card (Highlighted Primary CTA) -->
+          <div class="bg-gradient-to-b from-white/10 to-white/5 border-2 border-[#FF5E3A] p-8 rounded-3xl flex flex-col justify-between relative shadow-2xl transform md:-translate-y-4 z-10">
+            <span class="absolute top-0 right-6 -translate-y-1/2 bg-[#FF5E3A] text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">Most Selected</span>
+            <div>
+              <span class="text-xs font-bold uppercase tracking-widest text-[#FF5E3A] block mb-2">Talent Sourcing</span>
+              <h3 class="text-2xl font-bold mb-3">Tier 1 Placement</h3>
+              <p class="text-gray-300 text-xs mb-6 leading-relaxed">Sourcing, interviewing, and fully aligning elite system-certified operators directly onto your payroll.</p>
+              <div class="flex items-baseline mb-2">
+                <span class="text-4xl font-black tracking-tight text-white">₦84,000</span>
+              </div>
+              <span class="text-gray-400 text-xs font-medium tracking-wide block mb-6">One-time (7% of flat ₦1.2M baseline salary)</span>
+              <ul class="space-y-3.5 text-sm text-gray-200 border-t border-white/10 pt-6">
+                <li class="flex items-start"><span class="text-[#FF5E3A] mr-2">✓</span> Deep Vetting & Interviewing</li>
+                <li class="flex items-start"><span class="text-[#FF5E3A] mr-2">✓</span> Pre-Certified on Your Layout</li>
+                <li class="flex items-start"><span class="text-[#FF5E3A] mr-2">✓</span> Flat 7% Scale Variable Fee</li>
+              </ul>
+            </div>
+            <a href="index.html#contact" class="mt-8 block text-center bg-[#FF5E3A] hover:bg-[#E44A26] text-white font-black py-3 px-6 rounded-xl transition shadow-lg shadow-[#FF5E3A]/20">Deploy Placement</a>
+          </div>
+
+          <!-- Tier 2 Alignment Card -->
+          <div class="bg-white/5 border border-white/10 p-8 rounded-3xl flex flex-col justify-between relative shadow-xl hover:border-white/20 transition duration-300">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-widest text-[#FF5E3A] block mb-2">Team Optimization</span>
+              <h3 class="text-2xl font-bold mb-3">Tier 2 Alignment</h3>
+              <p class="text-gray-400 text-xs mb-6 leading-relaxed">Hands-on, aggressive sprint training programs to completely rebuild internal staff execution models.</p>
+              <div class="flex items-baseline mb-2">
+                <span class="text-4xl font-black tracking-tight text-white">₦100,000</span>
+              </div>
+              <span class="text-gray-500 text-xs uppercase font-semibold tracking-wider block mb-6">Per two staff members trained</span>
+              <ul class="space-y-3.5 text-sm text-gray-300 border-t border-white/5 pt-6">
+                <li class="flex items-start"><span class="text-[#FF5E3A] mr-2">✓</span> BridgeCore Execution Standards</li>
+                <li class="flex items-start"><span class="text-[#FF5E3A] mr-2">✓</span> Hands-On Diagnostic Sprints</li>
+                <li class="flex items-start"><span class="text-[#FF5E3A] mr-2">✓</span> Live Alignment Drills</li>
+              </ul>
+            </div>
+            <a href="index.html#contact" class="mt-8 block text-center bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-6 rounded-xl transition">Upgrade Team</a>
+          </div>
+
         </div>
       </div>
 
-      <div class="center-structural-stack">
-        
-        <div class="pricing-architecture-card card-modular-white">
-          <div class="modular-meta-row">
-            <span style="font-size: 20px;">👥</span>
-            <span class="modular-orange-badge">7% One-Time</span>
-          </div>
-          <h3>Talent Placement</h3>
-          <p>Sourcing, interviewing, and matching you with elite CX specialists from our pre-vetted database to join your direct payroll.</p>
-          <a href="#contact" class="modular-action-link">Pre-trained on your repository →</a>
+      <!-- 5. SECURITY TRUST BANNER -->
+      <div class="max-w-4xl mx-auto bg-gradient-to-r from-[#FF5E3A]/10 to-transparent border border-[#FF5E3A]/20 rounded-2xl p-6 md:p-8 text-left flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="max-w-xl">
+          <p class="text-sm md:text-base font-semibold text-gray-200 mb-1">
+            No corporate markup. No payroll liabilities on your books. Just airtight revenue protection.
+          </p>
+          <p class="text-xs text-gray-400">
+            If you’re ready to pull your builders out of the inbox and secure your customer retention, let’s build your firewall.
+          </p>
         </div>
-
-        <div class="pricing-architecture-card" style="background: rgba(255,255,255,0.02);">
-          <div class="modular-meta-row">
-            <span style="font-size: 20px; color: #00bdf2;">%</span>
-          </div>
-          <h3>The BridgeCore Standard</h3>
-          <p>Every strategy we deploy builds an airtight communication firewall engineered to secure retention and scale your revenue.</p>
-          <div class="modular-tags-container">
-            <span class="modular-tag-pill" style="background: rgba(255,255,255,0.05); color: #aaa;">Revenue Protection</span>
-            <span class="modular-tag-pill" style="background: rgba(255,255,255,0.05); color: #aaa;">Churn Elimination</span>
-          </div>
-        </div>
-
+        <a href="index.html#contact" class="w-full md:w-auto text-center flex-shrink-0 bg-transparent border border-[#FF5E3A] text-[#FF5E3A] hover:bg-[#FF5E3A] hover:text-white text-xs font-bold tracking-wider px-6 py-3 rounded-xl transition duration-300">BUILD YOUR FIREWALL</a>
       </div>
-
-      <div class="pricing-architecture-card card-alignment-cyan">
-        <div>
-          <div class="modular-meta-row">
-            <span style="font-size: 20px; color: #000;">⚡</span>
-            <span class="cyan-white-badge">High ROI</span>
-          </div>
-          <h3>Team Alignment</h3>
-          <p>For brands with an existing internal team. We run an intensive workshop to onboard and certify your current staff directly into the new architecture.</p>
-        </div>
-
-        <div>
-          <div class="cyan-price-metric">₦100,000 <span>/ ONE-TIME PER STAFF</span></div>
-          <div class="cyan-bottom-tag">Upgrade your existing team seamlessly</div>
-        </div>
-      </div>
-
-    </div>
+    </section>
   </main>
 
-  <section class="conversation-intake-section" id="contact">
-    <div class="intake-grid-container">
-      
-      <div class="intake-brand-context">
-        <h2>Ready to Stop Losing Customers to <span>Poor Complaint Handling?</span></h2>
-        <p class="intake-context-subtext">Tell us about your business and we'll show you exactly how Bridgecore can help you retain more customers and recover lost revenue within 30 days.</p>
-        
-        <div class="brand-directory-list">
-          <div class="directory-item">
-            <div>
-              <span class="directory-label">Email Us</span>
-              <a href="mailto:bridgecoreng@outlook.com" class="directory-value">bridgecoreng@outlook.com</a>
-            </div>
-          </div>
-          <div class="directory-item">
-            <div>
-              <span class="directory-label">Reach Aderinola Directly</span>
-              <a href="mailto:mordatallahawwal@gmail.com" class="directory-value">mordatallahawwal@gmail.com</a>
-            </div>
-          </div>
-          <div class="directory-item">
-            <div>
-              <span class="directory-label">WhatsApp</span>
-              <a href="https://wa.me/2349019214642" class="directory-value">09019214642</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="why-us-panel-box">
-          <div class="why-us-header">Why Businesses Choose Bridgecore</div>
-          <div class="why-us-bullet-item">CAC-registered, professionally run business</div>
-          <div class="why-us-bullet-item">Response within 24 hours of enquiry</div>
-          <div class="why-us-bullet-item">Flexible plans starting from ₦35,000/month</div>
-        </div>
-      </div>
-
-      <div class="smooth-intake-card">
-        <h3>Start a Conversation</h3>
-        <p>Fill in your details and we'll get back to you within 24 hours.</p>
-        
-        <form class="intake-form-matrix" onsubmit="event.preventDefault();">
-          <div class="form-input-wrapper">
-            <label>Full Name *</label>
-            <input type="text" placeholder="Chukwuemeka Okonkwo" required>
-          </div>
-          <div class="form-input-wrapper">
-            <label>Company Name *</label>
-            <input type="text" placeholder="Zeal Fintech Ltd." required>
-          </div>
-          <div class="form-input-wrapper">
-            <label>Email Address *</label>
-            <input type="email" placeholder="ceo@zealfintech.ng" required>
-          </div>
-          <div class="form-input-wrapper">
-            <label>WhatsApp / Phone *</label>
-            <input type="text" placeholder="+234 801 234 5678" required>
-          </div>
-          <div class="form-input-wrapper span-full">
-            <label>Industry</label>
-            <select>
-              <option>Select your Industry</option>
-              <option>E-commerce / Retail</option>
-              <option>Fintech / Finance</option>
-              <option>Logistics / Tech Stack</option>
-            </select>
-          </div>
-          <div class="form-input-wrapper span-full">
-            <label>Tell us about your challenge *</label>
-            <textarea rows="4" placeholder="Describe your current customer complaint situation — volume, channels, main pain points..." required></textarea>
-          </div>
-          <button type="submit" class="intake-action-submit">Send My Enquiry ⌂</button>
-        </form>
-      </div>
-
-    </div>
-  </section>
-
-  <footer class="pristine-white-footer">
-    <div class="footer-base-inner">
-      <div class="footer-upper-distribution">
-        <div class="footer-logo-brand">
-          <div class="brand-logo-square"></div>
-          Bridgecore.
-        </div>
-        <ul class="footer-horizontal-links">
-          <li><a href="/">Impact</a></li>
-          <li><a href="/services.html">Services</a></li>
-          <li><a href="/process.html">Process</a></li>
-          <li><a href="/founder.html">Founder</a></li>
-          <li><a href="/pricing.html">Pricing</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-lower-compliance-row">
-        <div>© 2026 Bridgecore Solution. CAC Registered. All rights reserved.</div>
-        <div class="compliance-links-group">
-          <a href="/privacy.html">Privacy Policy</a>
-          <a href="/terms.html">Terms</a>
+  <!-- 6. STANDARD SYSTEM FOOTER -->
+  <footer class="bg-[#0F1011] pt-16 pb-12 text-gray-500 border-t border-white/5 text-xs">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-white/5 pb-8">
+        <p>© 2026 Bridgecore Solution. CAC Registered. All rights reserved.</p>
+        <div class="flex space-x-4">
+          <a href="#privacy" class="hover:underline transition">Privacy Policy</a>
+          <a href="#terms" class="hover:underline transition">Terms of Service</a>
         </div>
       </div>
     </div>
   </footer>
 
+  <!-- 7. MOBILE MENU HAMBURGER CONTROLLER INTERFACES -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const menuTrigger = document.getElementById('hamburger-activation-button');
-      const navCanvas = document.getElementById('mobile-canvas-drawer');
-      const mobileCta = document.getElementById('mobile-drawer-cta');
-      const navigationLinks = document.querySelectorAll('.mobile-stack-item a');
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileDropdown = document.getElementById('mobile-dropdown');
 
-      function toggleResponsiveMenu() {
-        menuTrigger.classList.toggle('is-active');
-        navCanvas.classList.toggle('is-open');
-        document.body.style.overflow = navCanvas.classList.contains('is-open') ? 'hidden' : '';
-      }
+    hamburgerBtn.addEventListener('click', () => {
+      mobileDropdown.classList.toggle('hidden');
+    });
 
-      menuTrigger.addEventListener('click', toggleResponsiveMenu);
-      mobileCta.addEventListener('click', toggleResponsiveMenu);
-      
-      navigationLinks.forEach(link => {
-        link.addEventListener('click', toggleResponsiveMenu);
-      });
+    // Auto close dropdown window systems if user clicks a local link parameter
+    mobileDropdown.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileDropdown.classList.add('hidden'));
     });
   </script>
-
 </body>
 </html>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Process | Bridgecore Solution</title>
+    <link rel="icon" type="image/jpeg" href="WhatsApp Image 2026-04-11 at 10.45.13 (1).jpeg">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -410,5 +411,18 @@
         </div>
     </footer>
 
+    <script>
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const mobileDropdown = document.getElementById('mobile-dropdown');
+
+  hamburgerBtn.addEventListener('click', () => {
+    mobileDropdown.classList.toggle('hidden');
+  });
+
+  // Closes dropdown when a link is clicked
+  mobileDropdown.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => mobileDropdown.classList.add('hidden'));
+  });
+</script>
 </body>
 </html>
