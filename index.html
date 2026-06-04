@@ -1,182 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bridgecore - Customer Experience & Complaint Management</title>
-    <link rel="icon" type="image/jpeg" href="WhatsApp Image 2026-04-11 at 10.45.13 (1).jpeg">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter for clean, modern typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-    </style>
-</head>
-<body class="bg-gray-900 text-white antialiased">
-
-    <!-- HERO CONTAINER WITH BACKGROUND IMAGE & OVERLAY -->
-<!-- HERO SECTION -->
-<section class="relative min-h-[80vh] w-full flex items-center bg-gray-900 px-6">
-  <div class="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
-    <!-- Left Column: Hero Text -->
-    <div>
-      <span class="text-[#00BCD4] text-xs font-bold tracking-widest uppercase mb-4 block">CAC REGISTERED - EST. AUGUST 2025</span>
-      <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">We Don't Just Respond, <span class="text-[#00BCD4]">We Resolve.</span></h1>
-      <p class="text-gray-400 text-lg mb-8 max-w-lg">Bridgecore Solution helps businesses retain more customers, resolve complaints faster, and increase revenue — managed professionally on your behalf.</p>
-      
-      <div class="flex flex-wrap gap-4">
-        <a href="pricing.html" class="bg-[#00BCD4] hover:bg-[#0097A7] text-white font-bold py-4 px-8 rounded-full transition">View Detailed Pricing</a>
-      </div>
-    </div>
+<!-- REVISED HERO SECTION -->
+<section class="relative min-h-[80vh] w-full bg-gray-900 flex flex-col items-center">
     
-    <!-- Empty Right Column for balance or visual asset -->
-    <div class="hidden md:block"></div>
-  </div>
-</section>
+    <!-- Cleaned Navigation -->
+    <header class="w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between z-50">
+        <div class="flex items-center space-x-2">
+            <span class="text-xl font-bold tracking-tight text-white">Bridgecore</span>
+        </div>
 
-  <!-- Navigation Links (Hidden on mobile, flex on desktop) -->
-  <nav class="hidden md:flex items-center space-x-1 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-2 py-1.5">
-    <a href="index.html" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white px-4 py-1.5 rounded-full transition">Home</a>
-    <a href="index.html#impact" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white px-4 py-1.5 rounded-full transition">Impact</a>
-    <a href="services.html" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white px-4 py-1.5 rounded-full transition">Services</a>
-    <a href="process.html" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white px-4 py-1.5 rounded-full transition">Process</a>
-    <a href="founder.html" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white px-4 py-1.5 rounded-full transition">Founder</a>
-    <a href="pricing.html" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white px-4 py-1.5 rounded-full transition">Pricing</a>
-    <a href="index.html#contact" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white px-4 py-1.5 rounded-full transition">Contact</a>
-  </nav>
-
-  <!-- Header CTA Button -->
-  <div class="flex items-center space-x-3 flex-shrink-0">
-    <a href="index.html#contact" class="bg-[#FF5E3A] hover:bg-[#E44A26] text-white text-[10px] sm:text-xs font-bold tracking-wider px-4 sm:px-6 py-2.5 sm:py-3 rounded-full shadow-lg transition duration-300 inline-block">WORK WITH US</a>
-    
-    <!-- Hamburger Icon Button (Only visible on mobile) -->
-    <button id="hamburger-btn" class="md:hidden text-white hover:text-[#FF5E3A] focus:outline-none p-1 transition" aria-label="Toggle Menu">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
-    </button>
-  </div>
-
-  <!-- Mobile Dropdown Menu (Hidden by default) -->
-  <div id="mobile-dropdown" class="hidden absolute top-full left-0 w-full bg-gray-900/95 backdrop-blur-xl border-b border-white/10 flex flex-col p-6 space-y-4 z-40 md:hidden">
-    <a href="index.html" class="text-sm font-medium text-gray-300 hover:text-white transition py-1 border-b border-white/5">Home</a>
-    <a href="index.html#impact" class="text-sm font-medium text-gray-300 hover:text-white transition py-1 border-b border-white/5">Impact</a>
-    <a href="services.html" class="text-sm font-medium text-gray-300 hover:text-white transition py-1 border-b border-white/5">Services</a>
-    <a href="process.html" class="text-sm font-medium text-gray-300 hover:text-white transition py-1 border-b border-white/5">Process</a>
-    <a href="founder.html" class="text-sm font-medium text-gray-300 hover:text-white transition py-1 border-b border-white/5">Founder</a>
-    <a href="pricing.html" class="text-sm font-medium text-gray-300 hover:text-white transition py-1 border-b border-white/5">Pricing</a>
-    <a href="index.html#contact" class="text-sm font-medium text-gray-300 hover:text-white transition py-1">Contact</a>
-  </div>
-</header>
-      <!-- Header CTA Button -->
-      <div class="flex items-center space-x-3 flex-shrink-0">
-        <a href="index.html#contact" class="bg-[#FF5E3A] hover:bg-[#E44A26] text-white text-[10px] sm:text-xs font-bold tracking-wider px-4 sm:px-6 py-2.5 sm:py-3 rounded-full shadow-lg transition duration-300 inline-block">WORK WITH US</a>
-        
-        <!-- Hamburger Icon Button (Only visible on mobile) -->
-        <button id="hamburger-btn" class="md:hidden text-white hover:text-[#FF5E3A] focus:outline-none p-1 transition" aria-label="Toggle Menu">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Mobile Dropdown Menu (Hidden by default) -->
-      <div id="mobile-dropdown" class="hidden absolute top-full left-0 w-full bg-gray-900/95 backdrop-blur-xl border-b border-white/10 flex flex-col p-6 space-y-4 z-40 md:hidden">
-        <a href="index.html#impact" class="text-sm font-medium text-gray-300 hover:text-white transition py-1 border-b border-white/5">Impact</a>
-        <a href="services.html" class="text-sm font-medium text-gray-300 hover:text-white transition py-1 border-b border-white/5">Services</a>
-        <a href="process.html" class="text-sm font-medium text-gray-300 hover:text-white transition py-1 border-b border-white/5">Process</a>
-        <a href="founder.html" class="text-sm font-medium text-gray-300 hover:text-white transition py-1 border-b border-white/5">Founder</a>
-        <a href="pricing.html" class="text-sm font-medium text-gray-300 hover:text-white transition py-1 border-b border-white/5">Pricing</a>
-        <a href="index.html#contact" class="text-sm font-medium text-gray-300 hover:text-white transition py-1">Contact</a>
-      </div>
+        <nav class="hidden md:flex items-center space-x-8">
+            <a href="index.html" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white transition">Home</a>
+            <a href="services.html" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white transition">Services</a>
+            <a href="pricing.html" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white transition">Pricing</a>
+            <a href="#contact" class="text-xs font-semibold tracking-wider text-gray-300 hover:text-white transition">Contact</a>
+        </nav>
     </header>
 
-        <!-- 2. MAIN HERO BODY CONTENT -->
-        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-auto pt-12 md:pt-20 z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 relative">
-            
-            <!-- Left Column: Copy & Core Actions -->
-            <div class="lg:col-span-8 flex flex-col items-start space-y-6 max-w-2xl">
-                
-                <!-- Registration Badge -->
-                <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 text-[10px] font-bold tracking-widest text-gray-300 uppercase">
-                    <span class="w-2 h-2 rounded-full bg-[#00B2D6]"></span>
-                    <span>CAC Registered - Est. August 2025</span>
+    <!-- Main Content Area -->
+    <div class="flex-grow w-full max-w-7xl mx-auto px-6 pt-12 md:pt-20 grid lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Text -->
+        <div class="lg:col-span-8 flex flex-col items-start space-y-6">
+            <div class="inline-flex items-center space-x-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-[10px] font-bold tracking-widest text-gray-300 uppercase">
+                <span class="w-2 h-2 rounded-full bg-[#00B2D6]"></span>
+                <span>CAC Registered - Est. August 2025</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-white">
+                We Don't Just <br class="hidden sm:block">
+                Respond, <span class="text-[#00B2D6]">We Resolve.</span>
+            </h1>
+
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed font-light max-w-xl">
+                Bridgecore Solution helps businesses retain more customers, resolve complaints faster, and increase revenue — managed professionally on your behalf.
+            </p>
+        </div>
+
+        <!-- Right: Floating Info Card -->
+        <div class="lg:col-span-4 flex justify-center lg:justify-end w-full">
+            <div class="bg-white text-gray-900 rounded-2xl p-6 shadow-2xl max-w-sm w-full border border-gray-100">
+                <div class="flex items-start space-x-3 mb-6">
+                    <div class="bg-[#00B2D6]/10 p-2 rounded-xl text-[#00B2D6]">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-gray-900 tracking-tight">Trusted by Businesses</h4>
+                        <p class="text-[11px] text-gray-500 mt-0.5">Across fintech, retail & e-commerce</p>
+                    </div>
                 </div>
-
-                <!-- Sub-Headline -->
-                <h3 class="text-[#00B2D6] text-xs font-bold tracking-widest uppercase">
-                    Customer Experience & Complaint Management
-                </h3>
-
-                <!-- Main Headline -->
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-white">
-                    We Don't Just <br class="hidden sm:block">
-                    Respond, <span class="text-[#00B2D6]">We Resolve.</span>
-                </h1>
-
-                <!-- Descriptive Paragraph -->
-                <p class="text-gray-300 text-sm sm:text-base leading-relaxed font-light">
-                    Bridgecore Solution helps businesses retain more customers, resolve complaints faster, and increase revenue — managed professionally on your behalf.
-                </p>
-
-                <!-- Action Buttons -->
-               <!-- Example update for the "Pricing Philosophy" button -->
-<a href="pricing.html" class="inline-block bg-[#00BCD4] text-white font-bold py-3 px-8 rounded-full hover:bg-[#0097A7] transition">
-</a>
-        <a href="#contact" class="block text-center w-full bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-4 rounded-xl text-xs uppercase tracking-wider transition">Deploy Setup</a>
-      </div>
-
-
-      
-            <!-- Right Column / Floating Widget (Responsive Placement) -->
-            <div class="lg:col-span-4 flex items-end lg:justify-end w-full">
-                <!-- Floating Info Card -->
-                <div class="bg-white text-gray-900 rounded-2xl p-6 shadow-2xl max-w-sm w-full border border-gray-100 transform transition hover:scale-[1.01]">
-                    <div class="flex items-start space-x-3 mb-6">
-                        <div class="bg-[#00B2D6]/10 p-2 rounded-xl text-[#00B2D6]">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                        </div>
-                        <div>
-                            <h4 class="text-xs font-bold text-gray-900 tracking-tight">Trusted by Growing Businesses</h4>
-                            <p class="text-[11px] text-gray-500 mt-0.5">Across fintech, retail & e-commerce</p>
-                        </div>
-                    </div>
-                    
-                    <hr class="border-gray-100 my-4">
-
-                    <!-- Metrics Row -->
-                    <div class="grid grid-cols-3 gap-2 text-center">
-                        <div class="border-r border-gray-100 last:border-0 px-1">
-                            <span class="block text-sm font-extrabold text-[#00B2D6]">CX</span>
-                            <span class="text-[10px] text-gray-400 font-medium uppercase tracking-wider">Certified</span>
-                        </div>
-                        <div class="border-r border-gray-100 last:border-0 px-1">
-                            <span class="block text-sm font-extrabold text-[#F25C22]">3yrs</span>
-                            <span class="text-[10px] text-gray-400 font-medium uppercase tracking-wider">Experience</span>
-                        </div>
-                        <div class="px-1">
-                            <span class="block text-sm font-extrabold text-emerald-600">1k+</span>
-                            <span class="text-[10px] text-gray-400 font-medium uppercase tracking-wider">Resolved</span>
-                        </div>
-                    </div>
+                <hr class="border-gray-100 my-4">
+                <div class="grid grid-cols-3 gap-2 text-center">
+                    <div><span class="block text-sm font-extrabold text-[#00B2D6]">CX</span><span class="text-[10px] text-gray-400 uppercase">Certified</span></div>
+                    <div><span class="block text-sm font-extrabold text-[#F25C22]">3yrs</span><span class="text-[10px] text-gray-400 uppercase">Exp.</span></div>
+                    <div><span class="block text-sm font-extrabold text-emerald-600">1k+</span><span class="text-[10px] text-gray-400 uppercase">Resolved</span></div>
                 </div>
             </div>
         </div>
-
-        <!-- 3. BOTTOM DECORATIVE / EXPLORE ROW -->
-        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left z-10 hidden md:block">
-            <a href="#services" class="inline-flex flex-col items-center space-y-1 group">
-                <div class="p-2 border border-white/20 rounded-full group-hover:border-[#00B2D6] transition">
-                    <svg class="w-4 h-4 text-gray-400 group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                </div>
-                <span class="text-[10px] tracking-widest text-gray-400 font-bold uppercase group-hover:text-white transition">Explore</span>
-            </a>
-        </div>
-    </section>
-
-</body>
-</html><!-- ========================================== -->
+    </div>
+</section><!-- ========================================== -->
     <!-- 2. IMPACT / VALUE PROPOSITION SECTION     -->
     <!-- ========================================== -->
     <section id="impact" class="py-20 md:py-28 bg-[#FBFBFA]"> <!-- Changed background to the light off-white tone seen in the image, separate from Hero. -->
