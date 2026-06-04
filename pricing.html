@@ -1,185 +1,126 @@
-Here is the completely redesigned, fully responsive HTML and CSS section for your website. It uses the exact color palette, custom typography styles (`Clash Display` and `Plus Jakarta Sans`), and subtle visual accents (like the linear gradients and custom card structures) pulled directly from your presentation slides.
-
-You can paste this code directly into your website's source code or embed block.
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BridgeCore Elastic Pricing Framework</title>
+  <title>BridgeCore Solution — Pricing Framework</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
-    /* --- Core Styles --- */
-    .bcore-pricing-section {
-      background: #0a0a0a;
-      color: #fff;
+    /* --- Global Reset & Brand Tokens --- */
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+
+    body {
+      background: #ffffff;
+      color: #111111;
       font-family: 'Plus Jakarta Sans', sans-serif;
-      padding: 5rem 2rem;
+      overflow-x: hidden;
+    }
+
+    /* --- Pricing Grid Section --- */
+    .bcore-pricing-section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .bcore-grid-wrapper {
+      display: grid;
+      grid-template-columns: 1.14fr 1.2fr 1.14fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    /* --- Shared Card Styles --- */
+    .bcore-card {
+      border-radius: 28px;
+      padding: 2.5rem;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      overflow: hidden;
       position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    /* Ambient Background Glows */
-    .bcore-pricing-section::before {
-      content: '';
-      position: absolute;
-      top: 5%, left: -10%;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(0,189,242,0.06) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .bcore-pricing-section::after {
-      content: '';
-      position: absolute;
-      bottom: 5%; right: -10%;
-      width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(248,119,18,0.04) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .bcore-container {
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-    }
-
-    /* --- Header Layout --- */
-    .bcore-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .bcore-tagline {
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      color: #00bdf2;
-      text-transform: uppercase;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    .bcore-title {
+    .bcore-card h3 {
       font-family: 'Clash Display', sans-serif;
-      font-size: clamp(28px, 5vw, 42px);
-      font-weight: 700;
-      color: #f0f0f0;
+      font-size: 28px;
+      font-weight: 600;
       line-height: 1.2;
-      letter-spacing: -0.02em;
-      max-width: 700px;
-      margin: 0 auto 1.5rem auto;
-    }
-
-    .bcore-title span {
-      color: #f87712;
-    }
-
-    .bcore-subtitle {
-      font-size: clamp(14px, 2vw, 16px);
-      color: #666;
-      max-width: 550px;
-      margin: 0 auto;
-      line-height: 1.6;
-      font-weight: 400;
-    }
-
-    /* --- Compulsory Phase 1 Block --- */
-    .phase-one-card {
-      background: #0d0d0d;
-      border: 0.5px solid #222;
-      border-radius: 20px;
-      padding: 3rem;
-      margin-bottom: 2.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .phase-one-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #00bdf2, #f87712);
-    }
-
-    .card-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      border-bottom: 0.5px solid #222;
-      padding-bottom: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .phase-badge {
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-weight: 600;
-      color: #00bdf2;
-      background: rgba(0, 189, 242, 0.08);
-      padding: 6px 14px;
-      border-radius: 50px;
-      border: 0.5px solid rgba(0, 189, 242, 0.2);
-    }
-
-    .phase-price {
-      font-family: 'Clash Display', sans-serif;
-      font-size: clamp(32px, 4vw, 40px);
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .phase-price span {
-      font-size: 12px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      color: #555;
-      font-weight: 400;
-      letter-spacing: 0.05em;
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 3rem;
-    }
-
-    .card-left h3 {
-      font-family: 'Clash Display', sans-serif;
-      font-size: clamp(22px, 3vw, 28px);
-      font-weight: 600;
-      color: #fff;
       margin-bottom: 1rem;
       letter-spacing: -0.01em;
     }
 
-    .card-left p {
-      color: #aaa;
-      font-size: 14px;
-      line-height: 1.7;
+    .bcore-card p {
+      font-size: 14.5px;
+      line-height: 1.65;
+      font-weight: 400;
+    }
+
+    /* --- CARD 1: Tall Dark Card (Left Column) --- */
+    .card-dark {
+      background: #0d0d0d;
+      color: #ffffff;
+      grid-column: 1;
+      grid-row: span 2;
+      justify-content: space-between;
+      min-height: 560px;
+    }
+
+    .card-dark p {
+      color: #aaaaaa;
       font-weight: 300;
+      margin-bottom: 2rem;
+    }
+
+    .icon-bubble {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .icon-bubble svg {
+      width: 20px;
+      height: 20px;
+      fill: #00bdf2;
+    }
+
+    .price-large {
+      font-family: 'Clash Display', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-top: auto;
+      margin-bottom: 2rem;
+    }
+
+    .price-subtext {
+      font-size: 12px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #555555;
+      font-weight: 500;
+      letter-spacing: 0.05em;
     }
 
     .feature-list {
       list-style: none;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      margin-bottom: 3rem;
     }
 
     .feature-item {
-      font-size: 13px;
-      color: #888;
+      font-size: 13.5px;
+      color: #cccccc;
+      font-weight: 300;
+      margin-bottom: 0.85rem;
       display: flex;
       align-items: center;
       gap: 0.75rem;
@@ -187,238 +128,368 @@ You can paste this code directly into your website's source code or embed block.
 
     .feature-item::before {
       content: '✓';
-      color: #f87712;
-      font-weight: bold;
+      color: #00bdf2;
+      font-weight: 700;
     }
 
-    /* --- Step 2 Context Splitter --- */
-    .step-two-divider {
-      text-align: center;
-      margin: 4rem 0 3rem 0;
-      position: relative;
-    }
-
-    .step-two-divider h4 {
-      font-family: 'Clash Display', sans-serif;
-      font-size: 18px;
-      font-weight: 600;
-      color: #fff;
-      background: #0a0a0a;
-      display: inline-block;
-      padding: 0 20px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .step-two-divider::before {
-      content: '';
-      position: absolute;
-      top: 50%; left: 0; right: 0;
-      height: 0.5px;
-      background: #222;
-      z-index: 1;
-    }
-
-    /* --- Path Columns --- */
-    .paths-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
-
-    .path-card {
-      background: #0d0d0d;
-      border: 0.5px solid #222;
-      border-radius: 20px;
-      padding: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      transition: border-color 0.3s ease;
-    }
-
-    .path-card:hover {
-      border-color: #333;
-    }
-
-    .path-header {
-      margin-bottom: 2rem;
-    }
-
-    .path-label {
+    .card-bottom-label {
       font-size: 10px;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      font-weight: 600;
-      color: #f87712;
-      margin-bottom: 0.75rem;
-    }
-
-    .path-card h3 {
-      font-family: 'Clash Display', sans-serif;
-      font-size: 22px;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 1rem;
-    }
-
-    .path-card p {
-      color: #888;
-      font-size: 13.5px;
-      line-height: 1.65;
-      font-weight: 300;
-      margin-bottom: 2rem;
-    }
-
-    .path-pricing {
-      font-family: 'Clash Display', sans-serif;
-      font-size: 32px;
       font-weight: 700;
-      color: #fff;
-      border-top: 0.5px solid #222;
-      padding-top: 1.5rem;
+      color: #00bdf2;
       margin-top: auto;
     }
 
-    .path-pricing span {
-      font-size: 12px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      color: #555;
-      font-weight: 400;
-      display: block;
-      margin-top: 0.25rem;
+    /* --- CARDS 2 & 3: Stacked White Cards (Middle Column) --- */
+    .bcore-middle-stack {
+      grid-column: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .card-white {
+      background: #ffffff;
+      color: #111111;
+      border: 1px solid #f0f0f0;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.01);
+    }
+
+    .card-white p {
+      color: #666666;
+    }
+
+    .card-meta-inline {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .icon-bubble-light {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .top-badge-orange {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #f87712;
+    }
+
+    .card-link-orange {
+      font-size: 13px;
+      font-weight: 600;
+      color: #f87712;
+      margin-top: 2rem;
+      text-decoration: none;
+    }
+
+    .pills-container {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .pill-tag {
+      background: #f5f5f7;
+      color: #555555;
+      font-size: 10px;
+      font-weight: 600;
       letter-spacing: 0.05em;
+      padding: 6px 12px;
+      border-radius: 6px;
+      text-transform: uppercase;
     }
 
-    /* --- Global Action Button --- */
-    .bcore-cta-wrapper {
+    /* --- CARD 4: Solid Cyan Card (Right Column) --- */
+    .card-cyan {
+      background: #00bdf2;
+      color: #000000;
+      grid-column: 3;
+      grid-row: span 2;
+      justify-content: space-between;
+      min-height: 560px;
+    }
+
+    .card-cyan h3 {
+      color: #000000;
+    }
+
+    .card-cyan p {
+      color: rgba(0, 0, 0, 0.75);
+      font-weight: 400;
+    }
+
+    .top-badge-white {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.25);
+      padding: 4px 10px;
+      border-radius: 4px;
+      color: #000000;
+    }
+
+    .price-large-dark {
+      font-family: 'Clash Display', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: #000000;
+      margin-top: auto;
+    }
+
+    .price-large-dark span {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .card-bottom-text-dark {
+      font-size: 13px;
+      color: rgba(0, 0, 0, 0.6);
+      font-weight: 500;
+      margin-top: auto;
+    }
+
+    /* --- Brand Footer Section --- */
+    .bcore-footer {
+      background: #0a0a0a;
+      color: #ffffff;
+      padding: 5rem 2rem 2rem 2rem;
+      width: 100%;
+      position: relative;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
-      margin-top: 4rem;
     }
 
-    .bcore-btn {
+    .footer-cta-block {
+      margin-bottom: 5rem;
+    }
+
+    .footer-heading {
+      font-family: 'Clash Display', sans-serif;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+    }
+
+    .footer-heading span {
+      color: #f87712;
+    }
+
+    .btn-lets-talk {
       display: inline-flex;
       align-items: center;
       gap: 0.75rem;
-      background: #00bdf2;
-      color: #000;
+      background: transparent;
+      color: #ffffff;
       font-family: 'Clash Display', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      letter-spacing: 0.04em;
-      padding: 1rem 2.5rem;
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: 0.05em;
+      padding: 0.9rem 2.2rem;
       border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
       text-transform: uppercase;
       text-decoration: none;
-      transition: transform 0.2s ease, background 0.2s ease;
+      transition: all 0.3s ease;
     }
 
-    .bcore-btn:hover {
-      transform: translateY(-2px);
-      background: #00a5d4;
+    .btn-lets-talk:hover {
+      background: #ffffff;
+      color: #0a0a0a;
+      border-color: #ffffff;
     }
 
-    /* --- Responsive Breaks --- */
-    @media (max-width: 850px) {
-      .card-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+    .btn-lets-talk .arrow-icon {
+      width: 16px;
+      height: 16px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+    }
+
+    .footer-bottom-bar {
+      width: 100%;
+      max-width: 1200px;
+      border-top: 1px solid #1a1a1a;
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'Clash Display', sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      color: #ffffff;
+    }
+
+    .footer-logo span {
+      color: #00bdf2;
+    }
+
+    .copyright-text {
+      font-size: 12px;
+      color: #444444;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    /* --- Responsive Breakpoints --- */
+    @media (max-width: 1024px) {
+      .bcore-grid-wrapper {
+        grid-template-columns: 1fr 1fr;
       }
-      .paths-grid {
-        grid-template-columns: 1fr;
+      .card-dark {
+        grid-column: 1;
+        grid-row: span 1;
+      }
+      .bcore-middle-stack {
+        grid-column: 2;
+      }
+      .card-cyan {
+        grid-column: 1 / -0.5px;
+        grid-row: span 1;
+        min-height: 400px;
       }
     }
 
-    @media (max-width: 550px) {
-      .phase-one-card {
-        padding: 2rem 1.5rem;
+    @media (max-width: 768px) {
+      .bcore-pricing-section {
+        padding: 4rem 1.5rem;
       }
-      .feature-list {
+      .bcore-grid-wrapper {
         grid-template-columns: 1fr;
       }
-      .path-card {
-        padding: 2rem 1.5rem;
+      .card-dark, .bcore-middle-stack, .card-cyan {
+        grid-column: 1;
+      }
+      .footer-bottom-bar {
+        flex-direction: column;
+        gap: 1.5rem;
       }
     }
   </style>
 </head>
 <body>
 
-<section class="bcore-pricing-section">
-  <div class="bcore-container">
-    
-    <div class="bcore-header">
-      <div class="bcore-tagline">Elastic CX Framework</div>
-      <h2 class="bcore-title">Transparent execution models engineered for <span>scaling brands.</span></h2>
-      <p class="bcore-subtitle">No rigid corporate retainers or payroll markup liabilities. We design your operational systems and deploy or align your operators.</p>
-    </div>
-
-    <div class="phase-one-card">
-      <div class="card-meta">
-        <span class="phase-badge">Phase 01 — Mandatory Foundation</span>
-        <div class="phase-price">₦200,000 <span>/ ONE-TIME</span></div>
-      </div>
-      <div class="card-grid">
-        <div class="card-left">
-          <h3>Customer Experience Architecture</h3>
-          <p>We completely map, audit, and engineer your front-line communication framework. Before any operator handles an inquiry, we establish an airtight operational firewall to eliminate customer churn.</p>
-        </div>
-        <div class="card-right">
+  <section class="bcore-pricing-section">
+    <div class="bcore-grid-wrapper">
+      
+      <div class="bcore-card card-dark">
+        <div>
+          <div class="icon-bubble">
+            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
+          </div>
+          <h3>Phase 1 Setup</h3>
+          <p>We completely map, audit, and engineer your front-line communication framework before any operator handles a single inquiry.</p>
+          
           <ul class="feature-list">
             <li class="feature-item">Comprehensive Lifecycle Audit</li>
             <li class="feature-item">Custom Brand Voice Playbook</li>
-            <li class="feature-item">Helpdesk & CRM Automation Setup</li>
-            <li class="feature-item">Escalation Matrix Engineering</li>
-            <li class="feature-item">SLA Tracking Infrastructure</li>
-            <li class="feature-item">Frontline Performance Dashboards</li>
+            <li class="feature-item">Helpdesk & CRM Automation</li>
           </ul>
         </div>
+        
+        <div>
+          <div class="price-large">₦200,000 <span class="price-subtext">/ ONE-TIME</span></div>
+          <div class="card-bottom-label">Core Foundation</div>
+        </div>
       </div>
-    </div>
 
-    <div class="step-two-divider">
-      <h4>Phase 02 — Choose Your Execution Blueprint</h4>
-    </div>
+      <div class="bcore-middle-stack">
+        
+        <div class="bcore-card card-white">
+          <div class="card-meta-inline">
+            <div class="icon-bubble-light">
+              <span style="font-size: 20px;">👥</span>
+            </div>
+            <span class="top-badge-orange">7% One-Time</span>
+          </div>
+          <h3>Talent Placement</h3>
+          <p>Sourcing, interviewing, and matching you with elite CX specialists from our pre-vetted database to join your direct payroll.</p>
+          <a href="#talk" class="card-link-orange">Pre-trained on your repository →</a>
+        </div>
 
-    <div class="paths-grid">
+        <div class="bcore-card card-white">
+          <div class="card-meta-inline">
+            <div class="icon-bubble-light">
+              <span style="font-size: 20px;">📈</span>
+            </div>
+          </div>
+          <h3>The BridgeCore Standard</h3>
+          <p>Every strategy we deploy builds an airtight communication firewall engineered to secure retention and scale your revenue.</p>
+          <div class="pills-container">
+            <span class="pill-tag">Revenue Protection</span>
+            <span class="pill-tag">Churn Elimination</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bcore-card card-cyan">
+        <div>
+          <div class="card-meta-inline">
+            <div class="icon-bubble-light" style="opacity: 0.6;">
+              <span style="font-size: 20px; color: #000;">⚡</span>
+            </div>
+            <span class="top-badge-white">High ROI</span>
+          </div>
+          <h3>Team Alignment</h3>
+          <p>For brands with an existing internal team. We run an intensive workshop to onboard and certify your current staff directly into the new architecture.</p>
+        </div>
+
+        <div>
+          <div class="price-large-dark">₦100,000 <span>/ ONE-TIME PER STAFF</span></div>
+          <div class="card-bottom-text-dark">Upgrade your existing team seamlessly</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="bcore-footer" id="talk">
+    <div class="footer-content">
       
-      <div class="path-card">
-        <div class="path-header">
-          <div class="path-label">Path A — Need Talent</div>
-          <h3>Specialized Talent Placement</h3>
-          <p>For brands with zero support staff. We source, rigorously interview, and screen elite specialists from our pre-vetted African talent database. We train them explicitly on your newly engineered Phase 1 repository and drop them directly onto your direct payroll.</p>
-        </div>
-        <div class="path-pricing">
-          7% <span>ONE-TIME PLACEMENT FEE</span>
-          <span style="color: #444; font-size: 11px;">(Only ₦84,000 based on a ₦100k/mo salary baseline)</span>
-        </div>
+      <div class="footer-cta-block">
+        <h2 class="footer-heading">Ready to protect your <span>revenue?</span></h2>
+        <a href="https://wa.me/message/YOUR_LINK" class="btn-lets-talk">
+          <span>Let's Talk</span>
+          <span class="arrow-icon">→</span>
+        </a>
       </div>
 
-      <div class="path-card">
-        <div class="path-header">
-          <div class="path-label">Path B — Upgrade Existing Team</div>
-          <h3>In-House Team Alignment</h3>
-          <p>For brands with an existing internal team. You do not need to replace or change your staff. We step in to run a intensive, high-leverage alignment workshop, onboarding your current team directly into the newly built architecture and certifying them to the official BridgeCore Standard.</p>
-        </div>
-        <div class="path-pricing">
-          ₦100,000 <span>/ ONE-TIME PER STAFF MEMBER</span>
-        </div>
+      <div class="footer-bottom-bar">
+        <div class="footer-logo">BridgeCore<span>.</span></div>
+        <div class="copyright-text">© 2026 BridgeCore Solution Limited. All rights reserved.</div>
       </div>
 
     </div>
-
-    <div class="bcore-cta-wrapper">
-      <a href="#contact" class="bcore-btn">
-        <span>Build Your Frontline Firewall</span>
-        <span>👉</span>
-      </a>
-    </div>
-
-  </div>
-</section>
+  </footer>
 
 </body>
 </html>
-
-```
