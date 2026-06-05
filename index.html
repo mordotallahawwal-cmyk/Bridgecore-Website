@@ -36,7 +36,18 @@
         <a href="#contact" class="block">Contact</a>
     </div>
 
-    <!-- HERO SECTION -->
+
+           
+    <!-- JS for Hamburger Menu -->
+    <script>
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
+    </script>
+</body>
+</html>
+
+<!-- HERO SECTION UPDATED -->
 <section class="bg-[#0A1929] text-white py-24">
     <div class="max-w-7xl mx-auto px-4 text-center">
         <!-- Badge -->
@@ -64,39 +75,6 @@
         </div>
     </div>
 </section>
-           
-    <!-- JS for Hamburger Menu -->
-    <script>
-        const btn = document.getElementById('menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
-    </script>
-</body>
-</html>
-
-<!-- HERO SECTION -->
-    <section class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
-        <!-- Content Area -->
-        <div class="lg:col-span-8 space-y-6">
-            <div class="inline-block bg-white/10 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase text-gray-300">
-                CAC Registered - Est. August 2025
-            </div>
-            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
-                We Don't Just Respond, <span class="text-[#00B2D6]">We Resolve.</span>
-            </h1>
-            <p class="text-gray-300 text-base max-w-xl">
-                Bridgecore Solution helps businesses retain more customers, resolve complaints faster, and increase revenue — managed professionally on your behalf.
-            </p>
-            <!-- Call to Action Buttons -->
-            <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                <a href="#contact" class="bg-[#00B2D6] hover:bg-[#0092b0] transition text-white px-8 py-3 rounded-lg font-bold text-sm text-center">
-                    Get Started
-                </a>
-                <a href="#services" class="bg-transparent border border-gray-600 hover:border-white transition text-white px-8 py-3 rounded-lg font-bold text-sm text-center">
-                    Our Services
-                </a>
-            </div>
-        </div>
         
         <!-- Trust Badge/Stats Area -->
         <div class="lg:col-span-4 flex justify-end">
